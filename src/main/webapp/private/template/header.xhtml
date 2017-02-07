@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+
+<ui:composition>
+	<h:form>
+
+		<p:growl id="messages" />
+
+		<b:navBar brand="Bio Fitness" brandHref="#">
+			<b:navbarLinks>
+				<b:dropMenu value="Cadastros">
+					<b:navLink value="Países" href="/biofit/private/country.xhtml"></b:navLink>
+					<b:navLink value="Academias" href="#"></b:navLink>
+					<b:navLink value="Exercícios" href="#"></b:navLink>
+					<b:navLink value="Fichas" href="#"></b:navLink>
+					<b:navLink value="Grupos de Exercícios"></b:navLink>
+					<b:navLink value="Modalidades" href="#"></b:navLink>
+					<b:navLink value="Promoções" href="#"></b:navLink>
+				</b:dropMenu>
+				<b:navLink value="Relatórios" href="#"></b:navLink>
+
+				<!-- Alinhados a direita) -->
+				<b:navbarLinks pull="right">
+					<b:navLink value="    " href="#"></b:navLink>
+				</b:navbarLinks>
+				<b:navbarLinks pull="right" styleClass="hidden-xs">
+				<b:dropMenu value="Ajuda">
+						<b:navLink value="Action" href="#"></b:navLink>
+						<b:navLink value="Another action" href="#"></b:navLink>
+						<b:navLink value="Something else here" href="#"></b:navLink>
+						<b:navLink></b:navLink>
+						<b:navLink header="Nav header"></b:navLink>
+						<b:navLink value="Separated link" href="#"></b:navLink>
+						<b:navLink value="One more separated link" href="#"></b:navLink>
+					</b:dropMenu>
+					<b:navLink value="Sair" href="#"></b:navLink>
+				</b:navbarLinks>
+
+			</b:navbarLinks>
+		</b:navBar>
+
+	</h:form>
+</ui:composition>
+
+
+</html>
