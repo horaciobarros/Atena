@@ -50,11 +50,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					<f:selectItems value='#{responsavelAlunoBean.listaResponsavel}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente5'
-					value='#{responsavelAlunoBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{responsavelAlunoBean.pesquisa()}'
@@ -80,10 +75,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		
 				<p:column headerText='Responsavel Financeiro' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.responsavelFinanceiro}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -125,19 +116,19 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente6'
+				<p:inputText id='componente5'
 					value='#{responsavelAlunoBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Responsavel Financeiro:' />
-				<p:inputText id='componente7'
+				<p:inputText id='componente6'
 					value='#{responsavelAlunoBean.item.responsavelFinanceiro}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Aluno:' />
-				<p:selectOneMenu id='componente8'
+				<p:selectOneMenu id='componente7'
 					value='#{responsavelAlunoBean.item.aluno}' label='Aluno'
 					 converter='#{alunoConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
@@ -147,19 +138,13 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Responsavel:' />
-				<p:selectOneMenu id='componente9'
+				<p:selectOneMenu id='componente8'
 					value='#{responsavelAlunoBean.item.responsavel}' label='Responsavel'
 					 converter='#{responsavelConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 					<f:selectItems value='#{responsavelAlunoBean.listaResponsavel}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente10'
-					value='#{responsavelAlunoBean.item.tenancy}'>
- 				</p:inputText>
 		</div>
 		</div>
 		</div>

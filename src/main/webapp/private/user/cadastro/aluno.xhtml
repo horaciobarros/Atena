@@ -51,11 +51,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					<f:selectItems value='#{alunoBean.listaPessoa}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente6'
-					value='#{alunoBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{alunoBean.pesquisa()}'
@@ -89,10 +84,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		
 				<p:column headerText='Situacao' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.situacao}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -134,43 +125,37 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente7'
+				<p:inputText id='componente6'
 					value='#{alunoBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Matricula:' />
-				<p:inputText id='componente8'
+				<p:inputText id='componente7'
 					value='#{alunoBean.item.matricula}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Ra:' />
-				<p:inputText id='componente9'
+				<p:inputText id='componente8'
 					value='#{alunoBean.item.ra}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Situacao:' />
-				<p:inputText id='componente10'
+				<p:inputText id='componente9'
 					value='#{alunoBean.item.situacao}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Pessoa:' />
-				<p:selectOneMenu id='componente11'
+				<p:selectOneMenu id='componente10'
 					value='#{alunoBean.item.pessoa}' label='Pessoa'
 					 converter='#{pessoaConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 					<f:selectItems value='#{alunoBean.listaPessoa}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente12'
-					value='#{alunoBean.item.tenancy}'>
- 				</p:inputText>
 		</div>
 		</div>
 		</div>

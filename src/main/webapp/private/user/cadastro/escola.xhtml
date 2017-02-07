@@ -122,11 +122,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 				<p:inputText id='componente20'
 					value='#{escolaBean.itemFilter.uf}'>
  				</p:inputText>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente21'
-					value='#{escolaBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{escolaBean.pesquisa()}'
@@ -226,10 +221,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 						<h:outputText value='#{itemView.uf}' />
 				</p:column>
 		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
-				</p:column>
-		
 				<p:column headerText="#{i18n['operations']}" width='70'
 						style='text-align: center;'>
 						<p:commandButton id='buttonOperationEdit'
@@ -269,128 +260,122 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente22'
+				<p:inputText id='componente21'
 					value='#{escolaBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Ativo:' />
-				<p:inputText id='componente23'
+				<p:inputText id='componente22'
 					value='#{escolaBean.item.ativo}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Bairro:' />
-				<p:inputText id='componente24'
+				<p:inputText id='componente23'
 					value='#{escolaBean.item.bairro}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Celular:' />
-				<p:inputText id='componente25'
+				<p:inputText id='componente24'
 					value='#{escolaBean.item.celular}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Celular1:' />
-				<p:inputText id='componente26'
+				<p:inputText id='componente25'
 					value='#{escolaBean.item.celular1}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Cep:' />
-				<p:inputText id='componente27'
+				<p:inputText id='componente26'
 					value='#{escolaBean.item.cep}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Cidade:' />
-				<p:inputText id='componente28'
+				<p:inputText id='componente27'
 					value='#{escolaBean.item.cidade}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Cnpj:' />
-				<p:inputText id='componente29'
+				<p:inputText id='componente28'
 					value='#{escolaBean.item.cnpj}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Complemento:' />
-				<p:inputText id='componente30'
+				<p:inputText id='componente29'
 					value='#{escolaBean.item.complemento}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Email:' />
-				<p:inputText id='componente31'
+				<p:inputText id='componente30'
 					value='#{escolaBean.item.email}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Endereco:' />
-				<p:inputText id='componente32'
+				<p:inputText id='componente31'
 					value='#{escolaBean.item.endereco}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Inscricao Estadual:' />
-				<p:inputText id='componente33'
+				<p:inputText id='componente32'
 					value='#{escolaBean.item.inscricaoEstadual}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Inscricao Municipal:' />
-				<p:inputText id='componente34'
+				<p:inputText id='componente33'
 					value='#{escolaBean.item.inscricaoMunicipal}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Nome:' />
-				<p:inputText id='componente35'
+				<p:inputText id='componente34'
 					value='#{escolaBean.item.nome}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Numero:' />
-				<p:inputText id='componente36'
+				<p:inputText id='componente35'
 					value='#{escolaBean.item.numero}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Site:' />
-				<p:inputText id='componente37'
+				<p:inputText id='componente36'
 					value='#{escolaBean.item.site}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Status:' />
-				<p:inputText id='componente38'
+				<p:inputText id='componente37'
 					value='#{escolaBean.item.status}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Telefone Fixo:' />
-				<p:inputText id='componente39'
+				<p:inputText id='componente38'
 					value='#{escolaBean.item.telefoneFixo}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Telefone Fixo1:' />
-				<p:inputText id='componente40'
+				<p:inputText id='componente39'
 					value='#{escolaBean.item.telefoneFixo1}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Uf:' />
-				<p:inputText id='componente41'
+				<p:inputText id='componente40'
 					value='#{escolaBean.item.uf}'>
- 				</p:inputText>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente42'
-					value='#{escolaBean.item.tenancy}'>
  				</p:inputText>
 		</div>
 		</div>

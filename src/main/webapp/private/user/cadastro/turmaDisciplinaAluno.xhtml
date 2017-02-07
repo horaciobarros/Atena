@@ -45,11 +45,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					<f:selectItems value='#{turmaDisciplinaAlunoBean.listaTurmaDisciplina}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente4'
-					value='#{turmaDisciplinaAlunoBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{turmaDisciplinaAlunoBean.pesquisa()}'
@@ -71,10 +66,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 			<p:dataTable id='mainDataTable' value='#{turmaDisciplinaAlunoBean.items}'			var='itemView'>
 				<p:column headerText='Id' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.id}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -116,13 +107,13 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente5'
+				<p:inputText id='componente4'
 					value='#{turmaDisciplinaAlunoBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Aluno:' />
-				<p:selectOneMenu id='componente6'
+				<p:selectOneMenu id='componente5'
 					value='#{turmaDisciplinaAlunoBean.item.aluno}' label='Aluno'
 					 converter='#{alunoConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
@@ -132,19 +123,13 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Turma Disciplina:' />
-				<p:selectOneMenu id='componente7'
+				<p:selectOneMenu id='componente6'
 					value='#{turmaDisciplinaAlunoBean.item.turmaDisciplina}' label='Turma Disciplina'
 					 converter='#{turmaDisciplinaConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 					<f:selectItems value='#{turmaDisciplinaAlunoBean.listaTurmaDisciplina}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente8'
-					value='#{turmaDisciplinaAlunoBean.item.tenancy}'>
- 				</p:inputText>
 		</div>
 		</div>
 		</div>

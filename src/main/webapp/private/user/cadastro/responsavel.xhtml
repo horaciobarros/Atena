@@ -36,11 +36,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					<f:selectItems value='#{responsavelBean.listaPessoa}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente3'
-					value='#{responsavelBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{responsavelBean.pesquisa()}'
@@ -62,10 +57,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 			<p:dataTable id='mainDataTable' value='#{responsavelBean.items}'			var='itemView'>
 				<p:column headerText='Id' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.id}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -107,25 +98,19 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente4'
+				<p:inputText id='componente3'
 					value='#{responsavelBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Pessoa:' />
-				<p:selectOneMenu id='componente5'
+				<p:selectOneMenu id='componente4'
 					value='#{responsavelBean.item.pessoa}' label='Pessoa'
 					 converter='#{pessoaConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 					<f:selectItems value='#{responsavelBean.listaPessoa}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente6'
-					value='#{responsavelBean.item.tenancy}'>
- 				</p:inputText>
 		</div>
 		</div>
 		</div>

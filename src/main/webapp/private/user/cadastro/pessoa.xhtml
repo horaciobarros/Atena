@@ -112,11 +112,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 				<p:inputText id='componente18'
 					value='#{pessoaBean.itemFilter.uf}'>
  				</p:inputText>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente19'
-					value='#{pessoaBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{pessoaBean.pesquisa()}'
@@ -208,10 +203,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 						<h:outputText value='#{itemView.uf}' />
 				</p:column>
 		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
-				</p:column>
-		
 				<p:column headerText="#{i18n['operations']}" width='70'
 						style='text-align: center;'>
 						<p:commandButton id='buttonOperationEdit'
@@ -251,116 +242,110 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente20'
+				<p:inputText id='componente19'
 					value='#{pessoaBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Data Nascimento:' />
-				<p:inputText id='componente21'
+				<p:inputText id='componente20'
 					value='#{pessoaBean.item.dataNascimento}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Ativo:' />
-				<p:inputText id='componente22'
+				<p:inputText id='componente21'
 					value='#{pessoaBean.item.ativo}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Bairro:' />
-				<p:inputText id='componente23'
+				<p:inputText id='componente22'
 					value='#{pessoaBean.item.bairro}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Celular:' />
-				<p:inputText id='componente24'
+				<p:inputText id='componente23'
 					value='#{pessoaBean.item.celular}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Cep:' />
-				<p:inputText id='componente25'
+				<p:inputText id='componente24'
 					value='#{pessoaBean.item.cep}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Cidade:' />
-				<p:inputText id='componente26'
+				<p:inputText id='componente25'
 					value='#{pessoaBean.item.cidade}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Complemento:' />
-				<p:inputText id='componente27'
+				<p:inputText id='componente26'
 					value='#{pessoaBean.item.complemento}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Cpf:' />
-				<p:inputText id='componente28'
+				<p:inputText id='componente27'
 					value='#{pessoaBean.item.cpf}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Email:' />
-				<p:inputText id='componente29'
+				<p:inputText id='componente28'
 					value='#{pessoaBean.item.email}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Endereco:' />
-				<p:inputText id='componente30'
+				<p:inputText id='componente29'
 					value='#{pessoaBean.item.endereco}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Nome:' />
-				<p:inputText id='componente31'
+				<p:inputText id='componente30'
 					value='#{pessoaBean.item.nome}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Nome Mae:' />
-				<p:inputText id='componente32'
+				<p:inputText id='componente31'
 					value='#{pessoaBean.item.nomeMae}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Nome Pai:' />
-				<p:inputText id='componente33'
+				<p:inputText id='componente32'
 					value='#{pessoaBean.item.nomePai}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Numero:' />
-				<p:inputText id='componente34'
+				<p:inputText id='componente33'
 					value='#{pessoaBean.item.numero}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Status:' />
-				<p:inputText id='componente35'
+				<p:inputText id='componente34'
 					value='#{pessoaBean.item.status}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Telefone Fixo:' />
-				<p:inputText id='componente36'
+				<p:inputText id='componente35'
 					value='#{pessoaBean.item.telefoneFixo}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Uf:' />
-				<p:inputText id='componente37'
+				<p:inputText id='componente36'
 					value='#{pessoaBean.item.uf}'>
- 				</p:inputText>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente38'
-					value='#{pessoaBean.item.tenancy}'>
  				</p:inputText>
 		</div>
 		</div>

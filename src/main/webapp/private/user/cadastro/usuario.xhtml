@@ -42,11 +42,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 				<p:inputText id='componente4'
 					value='#{usuarioBean.itemFilter.password}'>
  				</p:inputText>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente5'
-					value='#{usuarioBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{usuarioBean.pesquisa()}'
@@ -80,10 +75,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		
 				<p:column headerText='Password' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.password}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -125,32 +116,26 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente6'
+				<p:inputText id='componente5'
 					value='#{usuarioBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Login:' />
-				<p:inputText id='componente7'
+				<p:inputText id='componente6'
 					value='#{usuarioBean.item.login}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Nivel:' />
-				<p:inputText id='componente8'
+				<p:inputText id='componente7'
 					value='#{usuarioBean.item.nivel}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Password:' />
-				<p:inputText id='componente9'
+				<p:inputText id='componente8'
 					value='#{usuarioBean.item.password}'>
- 				</p:inputText>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente10'
-					value='#{usuarioBean.item.tenancy}'>
  				</p:inputText>
 		</div>
 		</div>

@@ -37,11 +37,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 				<p:inputText id='componente3'
 					value='#{cursoBean.itemFilter.descricao}'>
  				</p:inputText>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente4'
-					value='#{cursoBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{cursoBean.pesquisa()}'
@@ -71,10 +66,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		
 				<p:column headerText='Descricao' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.descricao}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -116,26 +107,20 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente5'
+				<p:inputText id='componente4'
 					value='#{cursoBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Carga Horaria:' />
-				<p:inputText id='componente6'
+				<p:inputText id='componente5'
 					value='#{cursoBean.item.cargaHoraria}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Descricao:' />
-				<p:inputText id='componente7'
+				<p:inputText id='componente6'
 					value='#{cursoBean.item.descricao}'>
- 				</p:inputText>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente8'
-					value='#{cursoBean.item.tenancy}'>
  				</p:inputText>
 		</div>
 		</div>

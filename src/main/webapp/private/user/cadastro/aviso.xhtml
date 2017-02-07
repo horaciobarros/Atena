@@ -41,11 +41,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					<f:selectItems value='#{avisoBean.listaTurmaDisciplinaAluno}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente4'
-					value='#{avisoBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{avisoBean.pesquisa()}'
@@ -71,10 +66,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		
 				<p:column headerText='Descricao' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.descricao}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -116,31 +107,25 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente5'
+				<p:inputText id='componente4'
 					value='#{avisoBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Descricao:' />
-				<p:inputText id='componente6'
+				<p:inputText id='componente5'
 					value='#{avisoBean.item.descricao}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Turma Disciplina Aluno:' />
-				<p:selectOneMenu id='componente7'
+				<p:selectOneMenu id='componente6'
 					value='#{avisoBean.item.turmaDisciplinaAluno}' label='Turma Disciplina Aluno'
 					 converter='#{turmaDisciplinaAlunoConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 					<f:selectItems value='#{avisoBean.listaTurmaDisciplinaAluno}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente8'
-					value='#{avisoBean.item.tenancy}'>
- 				</p:inputText>
 		</div>
 		</div>
 		</div>

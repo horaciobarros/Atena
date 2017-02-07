@@ -74,11 +74,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					<f:selectItems value='#{turmaBean.listaTurno}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente9'
-					value='#{turmaBean.itemFilter.tenancy}'>
- 				</p:inputText>
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{turmaBean.pesquisa()}'
@@ -116,10 +111,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		
 				<p:column headerText='Periodo Letivo' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.periodoLetivo}' />
-				</p:column>
-		
-				<p:column headerText='Tenancy' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.tenancy}' />
 				</p:column>
 		
 				<p:column headerText="#{i18n['operations']}" width='70'
@@ -161,37 +152,37 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
 				<h:outputText value='Id:' />
-				<p:inputText id='componente10'
+				<p:inputText id='componente9'
 					value='#{turmaBean.item.id}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Codigo:' />
-				<p:inputText id='componente11'
+				<p:inputText id='componente10'
 					value='#{turmaBean.item.codigo}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Descricao:' />
-				<p:inputText id='componente12'
+				<p:inputText id='componente11'
 					value='#{turmaBean.item.descricao}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Numero Maximo Alunos:' />
-				<p:inputText id='componente13'
+				<p:inputText id='componente12'
 					value='#{turmaBean.item.numeroMaximoAlunos}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Periodo Letivo:' />
-				<p:inputText id='componente14'
+				<p:inputText id='componente13'
 					value='#{turmaBean.item.periodoLetivo}'>
  				</p:inputText>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Curso:' />
-				<p:selectOneMenu id='componente15'
+				<p:selectOneMenu id='componente14'
 					value='#{turmaBean.item.curso}' label='Curso'
 					 converter='#{cursoConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
@@ -201,7 +192,7 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Local:' />
-				<p:selectOneMenu id='componente16'
+				<p:selectOneMenu id='componente15'
 					value='#{turmaBean.item.local}' label='Local'
 					 converter='#{localConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
@@ -211,19 +202,13 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		</div>
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Turno:' />
-				<p:selectOneMenu id='componente17'
+				<p:selectOneMenu id='componente16'
 					value='#{turmaBean.item.turno}' label='Turno'
 					 converter='#{turnoConverter}'>
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 					<f:selectItems value='#{turmaBean.listaTurno}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-		</div>
-		<div class='ui-grid-col-6'>		
-				<h:outputText value='Tenancy:' />
-				<p:inputText id='componente18'
-					value='#{turmaBean.item.tenancy}'>
- 				</p:inputText>
 		</div>
 		</div>
 		</div>
