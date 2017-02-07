@@ -22,28 +22,28 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		<div class='ui-grid-row'>
 		<div class='ui-grid-col-12'>
 			<p:panel id='searchPanel' header="#{i18n['operations.search']}">
+			<h:inputHidden id='componente1'
+					value='#{alunoBean.itemFilter.id}'/>
 		
-				<h:outputText value='Id:' />
-				<p:inputText id='componente1'
-					value='#{alunoBean.itemFilter.id}'>
- 				</p:inputText>
-		
+			<p:panelGrid columns="8">
+				
 				<h:outputText value='Matricula:' />
 				<p:inputText id='componente2'
-					value='#{alunoBean.itemFilter.matricula}'>
+					value='#{alunoBean.itemFilter.matricula}' maxlength="8" size="8">
  				</p:inputText>
 		
 				<h:outputText value='Ra:' />
 				<p:inputText id='componente3'
-					value='#{alunoBean.itemFilter.ra}'>
+					value='#{alunoBean.itemFilter.ra}' maxlength="8" size="8">
  				</p:inputText>
 		
 				<h:outputText value='Situacao:' />
 				<p:inputText id='componente4'
-					value='#{alunoBean.itemFilter.situacao}'>
+					value='#{alunoBean.itemFilter.situacao}' maxlength="8" size="8">
  				</p:inputText>
 		
 				<h:outputText value='Pessoa:' />
+				
 				<p:selectOneMenu id='componente5'
 					value='#{alunoBean.itemFilter.pessoa}' label='Pessoa'
 					 converter='#{pessoaConverter}'>
@@ -51,6 +51,8 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					<f:selectItems value='#{alunoBean.listaPessoa}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
+				</p:panelGrid>
+				
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
 		update='viewPanel' actionListener='#{alunoBean.pesquisa()}'
@@ -70,9 +72,6 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 			</h:panelGroup>
 			
 			<p:dataTable id='mainDataTable' value='#{alunoBean.items}'			var='itemView'>
-				<p:column headerText='Id' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.id}' />
-				</p:column>
 		
 				<p:column headerText='Matricula' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.matricula}' />
@@ -124,11 +123,12 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 		rendered="#{alunoBean.state eq 'UPDATE'}" />
 		</f:facet>
 		<div class='ui-grid-form ui-grid ui-grid-responsive'>		<div class='ui-grid-row'>		<div class='ui-grid-col-6'>		
-				<h:outputText value='Id:' />
-				<p:inputText id='componente6'
-					value='#{alunoBean.item.id}'>
- 				</p:inputText>
+				<h:inputHidden id='componente6'
+					value='#{alunoBean.item.id}'/>
 		</div>
+		
+		<p:panelGrid columns="8">
+		
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Matricula:' />
 				<p:inputText id='componente7'
@@ -157,6 +157,7 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
 		</div>
+		</p:panelGrid>
 		</div>
 		</div>
 		<f:facet name='footer'>
