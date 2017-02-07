@@ -1,4 +1,4 @@
-Projeto Bio Fit - Spring + JSF + JPA
+Projeto Atena SGE
 =============================
 
 
