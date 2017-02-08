@@ -41,6 +41,7 @@ public  class AlunoBean extends SpringBeanAutowiringSupport implements Serializa
 	public AlunoBean() {
 		log.info("Bean constructor called.");
 		itemFilter = new Aluno();
+		itemFilter.setPessoa(new Pessoa());
 		limpaPesquisa();
 	}
 	
@@ -126,6 +127,9 @@ public  class AlunoBean extends SpringBeanAutowiringSupport implements Serializa
 		this.item = item;
 	}
 	public Aluno getItemFilter() {
+		if (itemFilter.getPessoa() == null) {
+			itemFilter.setPessoa(new Pessoa());
+		}
 		return itemFilter;
 	}
 	

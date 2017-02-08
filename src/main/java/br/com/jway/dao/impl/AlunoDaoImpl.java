@@ -26,6 +26,7 @@ public class AlunoDaoImpl implements AlunoDao{
 		StringBuilder jpql = new StringBuilder()
 			.append("SELECT x ") 
 			.append("FROM " + Aluno.class.getName() + " x ") //
+			.append("INNER JOIN x.pessoa p ") //
 			.append("ORDER BY x.id ASC ");
 		return em.createQuery(jpql.toString(), Aluno.class).getResultList();
 	}

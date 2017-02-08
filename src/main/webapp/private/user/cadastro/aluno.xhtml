@@ -25,33 +25,27 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 			<h:inputHidden id='componente1'
 					value='#{alunoBean.itemFilter.id}'/>
 		
-			<p:panelGrid columns="8">
+			<h:panelGrid columns="8" border="0">
 				
 				<h:outputText value='Matricula:' />
 				<p:inputText id='componente2'
 					value='#{alunoBean.itemFilter.matricula}' maxlength="8" size="8">
  				</p:inputText>
 		
-				<h:outputText value='Ra:' />
+				<h:outputText value='Cpf:' />
 				<p:inputText id='componente3'
-					value='#{alunoBean.itemFilter.ra}' maxlength="8" size="8">
- 				</p:inputText>
-		
-				<h:outputText value='Situacao:' />
-				<p:inputText id='componente4'
-					value='#{alunoBean.itemFilter.situacao}' maxlength="8" size="8">
+					value='#{alunoBean.itemFilter.pessoa.cpf}' maxlength="15" size="15">
  				</p:inputText>
 		
 				<h:outputText value='Pessoa:' />
-				
 				<p:selectOneMenu id='componente5'
 					value='#{alunoBean.itemFilter.pessoa}' label='Pessoa'
-					 converter='#{pessoaConverter}'>
+					 converter='#{pessoaConverter}' maxlength="60" size="60">
 					<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 					<f:selectItems value='#{alunoBean.listaPessoa}'
 					var='item' itemValue='#{item}' itemLabel='#{item.id}' />
 				</p:selectOneMenu>
-				</p:panelGrid>
+				</h:panelGrid>
 				
 	<div align="right">
 		<p:commandButton value='Pesquisar' id='buttonPesquisa'
@@ -77,15 +71,15 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 						<h:outputText value='#{itemView.matricula}' />
 				</p:column>
 		
-				<p:column headerText='Ra' width='30' style='text-align: center;'>
-						<h:outputText value='#{itemView.ra}' />
+				<p:column headerText='Nome' width='60' style='text-align: center;'>
+						<h:outputText value='#{itemView.pessoa.nome}' />
 				</p:column>
 		
 				<p:column headerText='Situacao' width='30' style='text-align: center;'>
 						<h:outputText value='#{itemView.situacao}' />
 				</p:column>
 		
-				<p:column headerText="#{i18n['operations']}" width='70'
+				<p:column headerText="#{i18n['operations']}" width='15'
 						style='text-align: center;'>
 						<p:commandButton id='buttonOperationEdit'
 							icon='ui-icon-pencil' process='@this' update='@form'
@@ -127,7 +121,104 @@ xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 					value='#{alunoBean.item.id}'/>
 		</div>
 		
+		<!--  dados de pessoa -->
+		<h:panelGrid columns="12">
+				<div class='ui-grid-col-6'>		
+				<h:outputText value='Cpf:' />
+				<p:inputText id='componente27'
+					value='#{alunoBean.item.pessoa.cpf}'>
+ 				</p:inputText>
+		</div>
+				<div class='ui-grid-col-6'>		
+				<h:outputText value='Nome:' />
+				<p:inputText id='componente30'
+					value='#{alunoBean.item.pessoa.nome}'>
+ 				</p:inputText>
+		</div>
 		
+		
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Data Nascimento:' />
+				<p:calendar id='componente20'
+					value='#{alunoBean.item.pessoa.dataNascimento}' showOn="button">
+ 				</p:calendar>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Bairro:' />
+				<p:inputText id='componente22'
+					value='#{alunoBean.item.pessoa.bairro}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Celular:' />
+				<p:inputText id='componente23'
+					value='#{alunoBean.item.pessoa.celular}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Cep:' />
+				<p:inputText id='componente24'
+					value='#{alunoBean.item.pessoa.cep}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Cidade:' />
+				<p:inputText id='componente25'
+					value='#{alunoBean.item.pessoa.cidade}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Complemento:' />
+				<p:inputText id='componente26'
+					value='#{alunoBean.item.pessoa.complemento}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Email:' />
+				<p:inputText id='componente28'
+					value='#{alunoBean.item.pessoa.email}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Endereco:' />
+				<p:inputText id='componente29'
+					value='#{alunoBean.item.pessoa.endereco}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Nome Mae:' />
+				<p:inputText id='componente31'
+					value='#{alunoBean.item.pessoa.nomeMae}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Nome Pai:' />
+				<p:inputText id='componente32'
+					value='#{alunoBean.item.pessoa.nomePai}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Numero:' />
+				<p:inputText id='componente33'
+					value='#{alunoBean.item.pessoa.numero}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Telefone Fixo:' />
+				<p:inputText id='componente35'
+					value='#{alunoBean.item.pessoa.telefoneFixo}'>
+ 				</p:inputText>
+		</div>
+		<div class='ui-grid-col-6'>		
+				<h:outputText value='Uf:' />
+				<p:inputText id='componente36'
+					value='#{alunoBean.item.pessoa.uf}'>
+ 				</p:inputText>
+		</div>
+		</h:panelGrid>
+		
+		
+		<!--  dados especificos do aluno -->
 		<div class='ui-grid-col-6'>		
 				<h:outputText value='Matricula:' />
 				<p:inputText id='componente7'
