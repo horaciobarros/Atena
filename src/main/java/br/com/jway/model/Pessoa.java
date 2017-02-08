@@ -78,6 +78,10 @@ public class Pessoa implements Serializable {
 
 	@Column(name="tenancy")
 	private Long tenancy;
+	
+	@Column(name="foto")
+	private byte[] foto;
+
 
 	public Long getId() { 
 		return id;
@@ -211,4 +215,12 @@ public class Pessoa implements Serializable {
 	public void  setTenancy(Long tenancy) { 
 		this.tenancy = tenancy;
 	}
+	public byte[] getFoto() {
+		return foto;
+	}
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
+	}
+	
+	
 }

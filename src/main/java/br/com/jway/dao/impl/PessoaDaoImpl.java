@@ -37,8 +37,9 @@ public class PessoaDaoImpl implements PessoaDao{
 	
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
-	public void create(Pessoa pessoa) {
+	public Pessoa create(Pessoa pessoa) {
 		em.persist(pessoa);
+		return pessoa;
 	}
 	
 	@Override

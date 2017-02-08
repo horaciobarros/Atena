@@ -22,8 +22,9 @@ public class PessoaServiceImpl implements PessoaService, Serializable{
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void create(Pessoa pessoa){
-		dao.create(pessoa);
+	public Pessoa create(Pessoa pessoa){
+		pessoa = dao.create(pessoa);
+		return pessoa;
 	}
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -32,8 +33,9 @@ public class PessoaServiceImpl implements PessoaService, Serializable{
 	}
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Pessoa pessoa){
+	public Pessoa update(Pessoa pessoa){
 		dao.update(pessoa);
+		return pessoa;
 	}
 	@Override
 	public Pessoa read(long id) {

@@ -39,6 +39,7 @@ public class AlunoDaoImpl implements AlunoDao{
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(Aluno aluno) {
+		aluno.setTenancy(Long.valueOf(1));
 		em.persist(aluno);
 	}
 	

@@ -81,10 +81,16 @@
 										<h:outputText value='#{itemView.pessoa.nome}' />
 									</p:column>
 
-									<p:column headerText='Situacao' width='30'
+									<p:column headerText='Cpf' width='14'
+										style='text-align: center;'>
+										<h:outputText value='#{itemView.pessoa.cpf}' />
+									</p:column>
+
+									<p:column headerText='Situacao' width='10'
 										style='text-align: center;'>
 										<h:outputText value='#{itemView.situacao}' />
 									</p:column>
+
 
 									<p:column headerText="#{i18n['operations']}" width='15'
 										style='text-align: center;'>
@@ -124,10 +130,24 @@
 										value="#{i18n['operations.update']} #{i18n['aluno']}"
 										rendered="#{alunoBean.state eq 'UPDATE'}" />
 								</f:facet>
+
+
+
 								<div class='ui-grid-row'>
 									<div class='ui-grid-col-6'>
 										<h:inputHidden id='componente6' value='#{alunoBean.item.id}' />
 									</div>
+
+									<h:outputText value="Foto" />
+									<p:graphicImage value="#{alunoBean.imagem}" id="imagem"
+										cache="false" />
+									<p:fileUpload sizeLimit="204800" auto="true"
+										widgetVar="uploader" label="Procurar..."
+										fileUploadListener="#{alunoBean.handleFileUpload}"
+										allowTypes="*.jpg;*.png;*.gif;" description="Images"
+										update="imagem" multiple="false" customUI="true" />
+
+
 
 									<!--  dados de pessoa -->
 									<p:panel id='editPanel2'>
@@ -150,8 +170,8 @@
 
 											<h:outputText value='Data Nascimento:' />
 											<p:calendar id='componente20'
-												value='#{alunoBean.item.pessoa.dataNascimento}'
-												showOn="button" size="10">
+												value='#{alunoBean.item.pessoa.dataNascimento}' size="10"
+												pattern="dd-MM-yyyy" mask="true">
 											</p:calendar>
 
 											<h:outputText value='Nome Mae:' />
@@ -214,19 +234,20 @@
 											<p:inputText id='componente23'
 												value='#{alunoBean.item.pessoa.celular}' size="10">
 											</p:inputText>
-											<h:outputText value='Email:' />
-											<p:inputText id='componente28'
-												value='#{alunoBean.item.pessoa.email}' size="80">
-											</p:inputText>
 											<h:outputText value='Telefone Fixo:' />
 											<p:inputText id='componente35'
 												value='#{alunoBean.item.pessoa.telefoneFixo}' size="10">
 											</p:inputText>
+											<h:outputText value='Email:' />
+											<p:inputText id='componente28'
+												value='#{alunoBean.item.pessoa.email}' size="80">
+											</p:inputText>
 
-										</h:panelGrid></p:panel>
+
+										</h:panelGrid>
+									</p:panel>
 
 
-									<!--  dados especificos do aluno -->
 								</div>
 								<f:facet name='footer'>
 									<p:commandButton value="#{i18n['button.cancel']}"

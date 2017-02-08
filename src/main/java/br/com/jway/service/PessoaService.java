@@ -6,11 +6,11 @@ import br.com.jway.model.Pessoa;
 
 public interface PessoaService extends Serializable {
 
-	public void create(Pessoa pessoa);
+	public Pessoa create(Pessoa pessoa);
 
 	public void delete(Pessoa pessoa);
 
-	public void update(Pessoa pessoa);
+	public Pessoa update(Pessoa pessoa);
 
 	public List<Pessoa> list();
 

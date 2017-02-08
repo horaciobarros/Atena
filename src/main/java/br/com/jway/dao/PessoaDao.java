@@ -10,7 +10,7 @@ public interface PessoaDao  {
 
 	Pessoa read(long id);
 
-	void create(Pessoa pessoa);
+	Pessoa create(Pessoa pessoa);
 
 	Pessoa update(Pessoa pessoa);
 

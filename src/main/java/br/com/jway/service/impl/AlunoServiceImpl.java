@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.jway.model.Aluno;
 import br.com.jway.dao.AlunoDao;
 import br.com.jway.service.AlunoService;
+import br.com.jway.service.PessoaService;
 
 @Named
 public class AlunoServiceImpl implements AlunoService, Serializable{
@@ -19,10 +20,17 @@ public class AlunoServiceImpl implements AlunoService, Serializable{
 
 	@Inject 
 	private AlunoDao dao;
+	
+	@Inject 
+	private PessoaService pessoaService;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void create(Aluno aluno){
+		if (aluno.getPessoa().getId() == null) {
+			aluno.getPessoa().setTenancy(Long.valueOf(1));
+			aluno.setPessoa(pessoaService.create(aluno.getPessoa()));
+		}
 		dao.create(aluno);
 	}
 	@Override
@@ -33,6 +41,7 @@ public class AlunoServiceImpl implements AlunoService, Serializable{
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(Aluno aluno){
+			aluno.setPessoa(pessoaService.update(aluno.getPessoa()));
 		dao.update(aluno);
 	}
 	@Override
