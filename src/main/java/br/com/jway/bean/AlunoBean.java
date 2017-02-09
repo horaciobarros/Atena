@@ -178,6 +178,7 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {
+		
 		try {
 			imagem = new DefaultStreamedContent(event.getFile().getInputstream());
 			byte[] foto = event.getFile().getContents();
