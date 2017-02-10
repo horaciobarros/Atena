@@ -4,21 +4,25 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
-import br.com.jway.service.*;
-import br.com.jway.model.*;
+
+import br.com.jway.model.Aluno;
+import br.com.jway.model.Pessoa;
+import br.com.jway.service.AlunoService;
+import br.com.jway.service.PessoaService;
 import br.com.jway.util.FacesUtils;
 
 @ManagedBean
@@ -36,14 +40,10 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 	private List<Aluno> items;
 	private List<Pessoa> listaPessoa;
 
-	private Pessoa Pessoa;
-
 	@Inject
 	private PessoaService pessoaService;
 	private Aluno item;
 	private Aluno itemFilter;
-
-	private StreamedContent imagem;
 
 	public AlunoBean() {
 		log.info("Bean constructor called.");
@@ -70,7 +70,6 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		try {
 			// Instantiating via reflection was used here for generic purposes
 			item = Aluno.class.newInstance();
-			imagem = null;
 		} catch (InstantiationException | IllegalAccessException e) {
 			FacesUtils.addI18nError("generic.bean.unableToCleanViewData");
 		}
@@ -81,7 +80,6 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		limpaPesquisa();
 		items = service.list();
 		item = null;
-		imagem = null;
 	}
 
 	public void update() {
@@ -89,7 +87,6 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		limpaPesquisa();
 		items = service.list();
 		item = null;
-		imagem = null;
 	}
 
 	public void delete() {
@@ -97,7 +94,6 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		limpaPesquisa();
 		items = service.list();
 		item = null;
-		imagem = null;
 	}
 
 	public void pesquisa() {
@@ -133,12 +129,6 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		if (item.getPessoa() == null) {
 			item.setPessoa(new Pessoa());
 		}
-		try {
-			imagem = new DefaultStreamedContent(new ByteArrayInputStream(item.getPessoa().getFoto()));
-		} catch (Exception e) {
-
-		}
-
 		return item;
 	}
 
@@ -165,27 +155,17 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		this.listaPessoa = listaPessoa;
 	}
 
-	public Pessoa getPessoa() {
-		return Pessoa;
-	}
-
-	public void setPessoa(Pessoa Pessoa) {
-		this.Pessoa = Pessoa;
-	}
-
 	public StreamedContent getImagem() {
-		return imagem;
-	}
-
-	public void setImagem(StreamedContent imagem) {
-		this.imagem = imagem;
+		if (item.getPessoa() != null && item.getPessoa().getFoto() != null) {
+			return new DefaultStreamedContent(new ByteArrayInputStream(item.getPessoa().getFoto()), "image/png");
+		} else {
+			return new DefaultStreamedContent();
+		}
 	}
 
 	public void handleFileUpload(FileUploadEvent event) {
-		
 		try {
-			imagem = new DefaultStreamedContent(event.getFile().getInputstream());
-			byte[] foto = event.getFile().getContents();
+			byte[] foto = IOUtils.toByteArray(event.getFile().getInputstream());
 			this.item.getPessoa().setFoto(foto);
 		} catch (IOException ex) {
 			System.out.println("Erro em evento de upload");

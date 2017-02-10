@@ -145,7 +145,7 @@
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>5.0</version>
+			<version>6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.primefaces.themes</groupId>
@@ -155,15 +155,17 @@
 		<dependency>
 			<groupId>org.primefaces.extensions</groupId>
 			<artifactId>primefaces-extensions</artifactId>
-			<version>3.0.0</version>
+			<version>6.0.0</version>
 		</dependency>
 
 		<!-- BOOTSFACES -->
+		<!-- https://mvnrepository.com/artifact/net.bootsfaces/bootsfaces -->
 		<dependency>
-			<groupId>net.bootsfaces</groupId>
-			<artifactId>bootsfaces</artifactId>
-			<version>0.8.1</version>
+		    <groupId>net.bootsfaces</groupId>
+		    <artifactId>bootsfaces</artifactId>
+		    <version>0.8.6</version>
 		</dependency>
+
 
 		<!-- UaiCriteria -->
 		<dependency>
