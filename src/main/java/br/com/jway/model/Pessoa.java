@@ -1,14 +1,17 @@
 package br.com.jway.model; 
 
 import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 import java.io.*;
 import java.util.*;
 import java.math.BigDecimal;
@@ -79,7 +82,8 @@ public class Pessoa implements Serializable {
 	@Column(name="tenancy")
 	private Long tenancy;
 	
-	@Column(name="foto")
+	@Lob
+	@Column(name="foto", columnDefinition = "BLOB",length=100000)
 	private byte[] foto;
 
 

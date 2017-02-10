@@ -70,6 +70,7 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		try {
 			// Instantiating via reflection was used here for generic purposes
 			item = Aluno.class.newInstance();
+			imagem = null;
 		} catch (InstantiationException | IllegalAccessException e) {
 			FacesUtils.addI18nError("generic.bean.unableToCleanViewData");
 		}
@@ -80,6 +81,7 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		limpaPesquisa();
 		items = service.list();
 		item = null;
+		imagem = null;
 	}
 
 	public void update() {
@@ -87,6 +89,7 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		limpaPesquisa();
 		items = service.list();
 		item = null;
+		imagem = null;
 	}
 
 	public void delete() {
@@ -94,6 +97,7 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		limpaPesquisa();
 		items = service.list();
 		item = null;
+		imagem = null;
 	}
 
 	public void pesquisa() {
