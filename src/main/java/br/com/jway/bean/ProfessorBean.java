@@ -1,14 +1,19 @@
 package br.com.jway.bean; 
 
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import br.com.jway.service.*;
@@ -16,7 +21,7 @@ import br.com.jway.model.*;
 import br.com.jway.util.FacesUtils;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
 public  class ProfessorBean extends SpringBeanAutowiringSupport implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -36,6 +41,8 @@ public  class ProfessorBean extends SpringBeanAutowiringSupport implements Seria
 	private PessoaService pessoaService;
 	private Professor item;
 	private Professor itemFilter;
+	
+	private StreamedContent imagem;
 	
 	
 	public ProfessorBean() {
@@ -148,6 +155,25 @@ public  class ProfessorBean extends SpringBeanAutowiringSupport implements Seria
 	
 	public void setPessoa(Pessoa Pessoa){
 		this.Pessoa = Pessoa;
+	}
+	
+	public StreamedContent getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(StreamedContent imagem) {
+		this.imagem = imagem;
+	}
+
+	public void handleFileUpload(FileUploadEvent event) {
+		
+		try {
+			imagem = new DefaultStreamedContent(event.getFile().getInputstream());
+			byte[] foto = event.getFile().getContents();
+			this.item.getPessoa().setFoto(foto);
+		} catch (IOException ex) {
+			System.out.println("Erro em evento de upload");
+		}
 	}
 
 }
