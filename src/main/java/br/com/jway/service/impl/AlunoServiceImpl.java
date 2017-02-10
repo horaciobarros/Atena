@@ -1,4 +1,4 @@
-package br.com.jway.service.impl; 
+package br.com.jway.service.impl;
 
 import java.io.Serializable;
 import java.util.List;
@@ -12,38 +12,45 @@ import br.com.jway.model.Aluno;
 import br.com.jway.dao.AlunoDao;
 import br.com.jway.service.AlunoService;
 import br.com.jway.service.PessoaService;
+import br.com.jway.service.TenancyService;
 
 @Named
-public class AlunoServiceImpl implements AlunoService, Serializable{
+public class AlunoServiceImpl implements AlunoService, Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject 
+	@Inject
 	private AlunoDao dao;
-	
-	@Inject 
+
+	@Inject
 	private PessoaService pessoaService;
+
+	@Inject
+	private TenancyService tenancyService;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void create(Aluno aluno){
+	public void create(Aluno aluno) {
 		if (aluno.getPessoa().getId() == null) {
-			aluno.getPessoa().setTenancy(Long.valueOf(1));
+			aluno.getPessoa().setTenancy(tenancyService.getTenancyDaSessao());
 			aluno.setPessoa(pessoaService.create(aluno.getPessoa()));
 		}
 		dao.create(aluno);
 	}
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void delete(Aluno aluno){
+	public void delete(Aluno aluno) {
 		dao.delete(aluno);
 	}
+
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void update(Aluno aluno){
-			aluno.setPessoa(pessoaService.update(aluno.getPessoa()));
+	public void update(Aluno aluno) {
+		aluno.setPessoa(pessoaService.update(aluno.getPessoa()));
 		dao.update(aluno);
 	}
+
 	@Override
 	public Aluno read(long id) {
 		return dao.read(id);
@@ -56,11 +63,12 @@ public class AlunoServiceImpl implements AlunoService, Serializable{
 	}
 
 	@Override
-	public List<Aluno> list(){
+	public List<Aluno> list() {
 		return dao.list();
- 	}
+	}
+
 	@Override
-	public List<Aluno> pesquisa(Aluno aluno){
+	public List<Aluno> pesquisa(Aluno aluno) {
 		return dao.pesquisa(aluno);
- 	}
+	}
 }

@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jway.model.Professor;
 import br.com.jway.dao.ProfessorDao;
+import br.com.jway.service.PessoaService;
 import br.com.jway.service.ProfessorService;
+import br.com.jway.service.TenancyService;
 
 @Named
 public class ProfessorServiceImpl implements ProfessorService, Serializable{
@@ -19,10 +21,21 @@ public class ProfessorServiceImpl implements ProfessorService, Serializable{
 
 	@Inject 
 	private ProfessorDao dao;
+	
+	@Inject 
+	private PessoaService pessoaService;
+	
+	@Inject
+	private TenancyService tenancyService;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void create(Professor professor){
+		if (professor.getPessoa().getId() == null) {
+			professor.setTenancy(tenancyService.getTenancyDaSessao());
+			professor.getPessoa().setTenancy(tenancyService.getTenancyDaSessao());
+			professor.setPessoa(pessoaService.create(professor.getPessoa()));
+		}
 		dao.create(professor);
 	}
 	@Override
@@ -33,6 +46,8 @@ public class ProfessorServiceImpl implements ProfessorService, Serializable{
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(Professor professor){
+		professor.setPessoa(pessoaService.update(professor.getPessoa()));
+		
 		dao.update(professor);
 	}
 	@Override

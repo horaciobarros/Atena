@@ -1,5 +1,6 @@
 package br.com.jway.bean; 
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -48,6 +49,7 @@ public  class ProfessorBean extends SpringBeanAutowiringSupport implements Seria
 	public ProfessorBean() {
 		log.info("Bean constructor called.");
 		itemFilter = new Professor();
+		itemFilter.setPessoa(new Pessoa());
 		limpaPesquisa();
 		listaPessoa = pessoaService.list();
 	}
@@ -126,6 +128,14 @@ public  class ProfessorBean extends SpringBeanAutowiringSupport implements Seria
 	}
 	
 	public Professor getItem() {
+		if (item.getPessoa() == null) {
+			item.setPessoa(new Pessoa());
+		}
+		try {
+			imagem = new DefaultStreamedContent(new ByteArrayInputStream(item.getPessoa().getFoto()));
+		} catch (Exception e) {
+
+		}
 		return item;
 	}
 	

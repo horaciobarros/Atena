@@ -1,6 +1,8 @@
 package br.com.jway.dao.impl; 
 
 import java.util.List;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.jway.dao.AlunoDao;
 import br.com.jway.model.Aluno;
+import br.com.jway.service.TenancyService;
 import br.com.jway.dao.*;
 import com.uaihebert.uaicriteria.UaiCriteria;
 
@@ -20,6 +23,9 @@ public class AlunoDaoImpl implements AlunoDao{
 	protected EntityManager em;
 
 	UaiCriteria<Aluno> uaiCriteria;
+	
+	@Inject
+	private TenancyService tenancyService;
 
 	@Override
 	 public List<Aluno> list() {
@@ -39,7 +45,8 @@ public class AlunoDaoImpl implements AlunoDao{
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(Aluno aluno) {
-		aluno.setTenancy(Long.valueOf(1));
+		
+		aluno.setTenancy(tenancyService.getTenancyDaSessao());
 		em.persist(aluno);
 	}
 	
