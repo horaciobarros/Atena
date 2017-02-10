@@ -105,42 +105,38 @@
 										value="#{i18n['operations.update']} #{i18n['professor']}"
 										rendered="#{professorBean.state eq 'UPDATE'}" />
 								</f:facet>
-								<div class='ui-grid-form ui-grid ui-grid-responsive'>
-									<div class='ui-grid-row'>
-										<div class='ui-grid-col-6'>
-											<h:inputHidden id='componente4'
-												value='#{professorBean.item.id}'>
-											</h:inputHidden>
-										</div>
-										<div class='ui-grid-col-6'>
-											<h:outputText value='Titulo:' />
-											<p:inputText id='componente5'
-												value='#{professorBean.item.titulo}'>
-											</p:inputText>
-										</div>
-										<!-- Dados da pessoa -->
-										<p:panel id='editPanel2'>
+								<div class='ui-grid-col-6'>
+									<h:inputHidden id='componente4'
+										value='#{professorBean.item.id}'>
+									</h:inputHidden>
+								</div>
+
+
+								<!-- Dados da pessoa -->
+								<h:panelGrid columns="1">
+
+									<p:panel id='editPanel2'>
 										<f:facet name='header'>
 											<h:outputText value="Dados pessoais" />
 										</f:facet>
-										
 
-										<h:form enctype="multipart/form-data">
-											<h:outputText value="Foto" />
-											<p:graphicImage value="#{professorBean.imagem}" id="imagem"
-												width="150" height="100" />
-											<p:fileUpload sizeLimit="900000" auto="true"
-												id="fileUploadId" widgetVar="uploader" label="Procurar..."
-												fileUploadListener="#{professorBean.handleFileUpload}"
-												allowTypes="/(\.|\/)(gif|jpe?g|png)$/" description="Images"
-												update="imagem" multiple="false" />
-										</h:form>
+										<h:panelGrid columns="6">
 
-										<h:panelGrid columns="4">
+											<h:form enctype="multipart/form-data">
+												<h:outputText value="Foto" />
+												<p:graphicImage value="#{professorBean.imagem}" id="imagem"
+													width="150" height="100" />
+												<p:fileUpload sizeLimit="900000" auto="true"
+													id="fileUploadId" widgetVar="uploader" label="Procurar..."
+													fileUploadListener="#{professorBean.handleFileUpload}"
+													allowTypes="/(\.|\/)(gif|jpe?g|png)$/" description="Images"
+													update="imagem" multiple="false" />
+											</h:form>
+
 											<h:outputText value='Cpf:' styleClass="cssLabel" />
 											<p:inputMask id='componente27'
-												value='#{professorBean.item.pessoa.cpf}' style="width: 20%"
-																								mask="999.999.999-99">
+												value='#{professorBean.item.pessoa.cpf}' 
+												mask="999.999.999-99">
 											</p:inputMask>
 
 											<h:outputText value='Nome:' />
@@ -148,12 +144,9 @@
 												value='#{professorBean.item.pessoa.nome}' size="80">
 											</p:inputText>
 
+										</h:panelGrid>
 
-											<h:outputText value='Data Nascimento:' />
-											<p:calendar id='componente20'
-												value='#{professorBean.item.pessoa.dataNascimento}' style="width: 20% important!"
-												pattern="dd-MM-yyyy" mask="true">
-											</p:calendar>
+										<h:panelGrid columns="4">
 
 											<h:outputText value='Nome Mae:' />
 											<p:inputText id='componente31'
@@ -163,6 +156,13 @@
 											<p:inputText id='componente32'
 												value='#{professorBean.item.pessoa.nomePai}' size="80">
 											</p:inputText>
+											
+											<h:outputText value='Data Nascimento:' />
+											<p:calendar id='componente20'
+												value='#{professorBean.item.pessoa.dataNascimento}'
+												style="width: 20% important!" pattern="dd-MM-yyyy"
+												mask="true">
+											</p:calendar>
 										</h:panelGrid>
 									</p:panel>
 
@@ -175,15 +175,17 @@
 										<h:panelGrid columns="4">
 											<h:outputText value='Rua/Av:' />
 											<p:inputText id='componente29' 
-												value='#{professorBean.item.pessoa.endereco}'>
+												value='#{professorBean.item.pessoa.endereco}' size="80">
 											</p:inputText>
 											<h:outputText value='Numero:' />
 											<p:inputText id='componente33'
-												value='#{professorBean.item.pessoa.numero}' style="width: 20%">
+												value='#{professorBean.item.pessoa.numero}'
+												style="width: 20%">
 											</p:inputText>
 											<h:outputText value='Complemento:' />
 											<p:inputText id='componente26'
-												value='#{professorBean.item.pessoa.complemento}' style="width: 20%">
+												value='#{professorBean.item.pessoa.complemento}'
+												style="width: 20%">
 											</p:inputText>
 
 											<h:outputText value='Bairro:' />
@@ -209,7 +211,8 @@
 										<f:facet name='header'>
 											<h:outputText value="Dados para contato" />
 										</f:facet>
-										<h:panelGrid columns="4">
+										<h:panelGrid columns="6">
+										
 
 											<h:outputText value='Celular:' />
 											<p:inputText id='componente23'
@@ -227,9 +230,8 @@
 
 										</h:panelGrid>
 									</p:panel>
-										
-									</div>
-								</div>
+								</h:panelGrid>
+
 								<f:facet name='footer'>
 									<p:commandButton value="#{i18n['button.cancel']}"
 										icon='ui-icon-close' process='@this' update='@form'
