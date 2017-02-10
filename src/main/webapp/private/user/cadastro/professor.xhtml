@@ -67,7 +67,7 @@
 										<h:outputText value='#{itemView.pessoa.cpf}' />
 									</p:column>
 
-									<p:column headerText="#{i18n['operations']}" width='15'
+									<p:column headerText="#{i18n['operations']}" width='5'
 										style='text-align: center;'>
 										<p:commandButton id='buttonOperationEdit'
 											icon='ui-icon-pencil' process='@this' update='@form'
@@ -139,19 +139,19 @@
 										<h:panelGrid columns="4">
 											<h:outputText value='Cpf:' styleClass="cssLabel" />
 											<p:inputMask id='componente27'
-												value='#{professorBean.item.pessoa.cpf}' size="14"
-												mask="999.999.999-99">
+												value='#{professorBean.item.pessoa.cpf}' style="width: 20%"
+																								mask="999.999.999-99">
 											</p:inputMask>
-
 
 											<h:outputText value='Nome:' />
 											<p:inputText id='componente30'
 												value='#{professorBean.item.pessoa.nome}' size="80">
 											</p:inputText>
 
+
 											<h:outputText value='Data Nascimento:' />
 											<p:calendar id='componente20'
-												value='#{professorBean.item.pessoa.dataNascimento}' size="10"
+												value='#{professorBean.item.pessoa.dataNascimento}' style="width: 20% important!"
 												pattern="dd-MM-yyyy" mask="true">
 											</p:calendar>
 
@@ -174,16 +174,16 @@
 
 										<h:panelGrid columns="4">
 											<h:outputText value='Rua/Av:' />
-											<p:inputText id='componente29' size="60"
+											<p:inputText id='componente29' 
 												value='#{professorBean.item.pessoa.endereco}'>
 											</p:inputText>
 											<h:outputText value='Numero:' />
 											<p:inputText id='componente33'
-												value='#{professorBean.item.pessoa.numero}' size="5">
+												value='#{professorBean.item.pessoa.numero}' style="width: 20%">
 											</p:inputText>
 											<h:outputText value='Complemento:' />
 											<p:inputText id='componente26'
-												value='#{professorBean.item.pessoa.complemento}' size="20">
+												value='#{professorBean.item.pessoa.complemento}' style="width: 20%">
 											</p:inputText>
 
 											<h:outputText value='Bairro:' />
