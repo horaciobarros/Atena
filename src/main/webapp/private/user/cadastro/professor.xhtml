@@ -27,11 +27,6 @@
 									value='#{professorBean.itemFilter.id}'>
 								</h:inputHidden>
 
-								<h:outputText value='Titulo:' />
-								<p:inputText id='componente2'
-									value='#{professorBean.itemFilter.titulo}'>
-								</p:inputText>
-
 								<h:outputText value='Pessoa:' />
 								<p:selectOneMenu id='componente3'
 									value='#{professorBean.itemFilter.pessoa}' label='Pessoa'
@@ -62,12 +57,17 @@
 								<p:dataTable id='mainDataTable' value='#{professorBean.items}'
 									var='itemView'>
 
-									<p:column headerText='Titulo' width='30'
+									<p:column headerText='Nome' width='60'
 										style='text-align: center;'>
-										<h:outputText value='#{itemView.titulo}' />
+										<h:outputText value='#{itemView.pessoa.nome}' />
 									</p:column>
 
-									<p:column headerText="#{i18n['operations']}" width='70'
+									<p:column headerText='Cpf' width='14'
+										style='text-align: center;'>
+										<h:outputText value='#{itemView.pessoa.cpf}' />
+									</p:column>
+
+									<p:column headerText="#{i18n['operations']}" width='15'
 										style='text-align: center;'>
 										<p:commandButton id='buttonOperationEdit'
 											icon='ui-icon-pencil' process='@this' update='@form'

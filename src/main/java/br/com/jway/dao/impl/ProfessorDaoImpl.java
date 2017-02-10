@@ -26,7 +26,7 @@ public class ProfessorDaoImpl implements ProfessorDao{
 		StringBuilder jpql = new StringBuilder()
 			.append("SELECT x ") 
 			.append("FROM " + Professor.class.getName() + " x ") //
-			.append("ORDER BY x.id ASC ");
+			.append("INNER JOIN x.pessoa ORDER BY x.id ASC ");
 		return em.createQuery(jpql.toString(), Professor.class).getResultList();
 	}
 	
