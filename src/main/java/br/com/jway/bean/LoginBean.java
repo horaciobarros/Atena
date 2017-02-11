@@ -62,6 +62,7 @@ public class LoginBean extends SpringBeanAutowiringSupport implements Serializab
 
 	public LoginBean() {
 		log.info("Bean @PostConstruct called.");
+		setErro(false);
 
 
 	}
@@ -77,6 +78,7 @@ public class LoginBean extends SpringBeanAutowiringSupport implements Serializab
 		if (usuarioAux != null && usuarioAux.getId() != null) {
 			msg = "";
 			usuarioLogado = usuarioAux;
+			setErro(false);
 			return "/private/index";
 		} else {
 
