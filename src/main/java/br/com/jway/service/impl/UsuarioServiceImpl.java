@@ -61,7 +61,6 @@ public class UsuarioServiceImpl implements UsuarioService, Serializable{
 	}
 	@Override
 	public Usuario busca(Usuario usuarioLogado) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.busca(usuarioLogado);
 	}
 }

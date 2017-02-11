@@ -6,35 +6,62 @@ import java.util.Date;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.inject.Inject;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.Session;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
+import br.com.jway.model.Tenancy;
 import br.com.jway.model.Usuario;
 import br.com.jway.service.UsuarioService;
-import br.com.jway.util.Util;
 
 
-@Component
 @SessionScoped
 @ManagedBean(name="loginBean")
-public class LoginBean implements Serializable {
+public class LoginBean extends SpringBeanAutowiringSupport implements Serializable {
 	/**
 	 * 
 	 */
-	@Autowired
+	protected static final Log log = LogFactory.getLog(LoginBean.class);
+	
+	@Inject
 	private UsuarioService usuarioService;
+	
 	private static final long serialVersionUID = 1L;
 	private Usuario usuarioLogado = new Usuario();
-	@Autowired
+
 	private String msg;
-	private String dataAtual;
 	private String senha1;
 	private String senha2;
-	private Session session;
+	private Session session; 
+	private Boolean erro;
+	
+	private Tenancy tenancy;
+
+	public Tenancy getTenancy() {
+		return tenancy;
+	}
+
+	public void setTenancy(Tenancy tenancy) {
+		this.tenancy = tenancy;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public void setUsuarioLogado(Usuario usuarioLogado) {
+		this.usuarioLogado = usuarioLogado;
+	}
+
+	public void setSession(Session session) {
+		this.session = session;
+	}
 
 	public LoginBean() {
+		log.info("Bean @PostConstruct called.");
 
 
 	}
@@ -44,21 +71,20 @@ public class LoginBean implements Serializable {
 	}
 
 	public String efetuaLogin() {
+		
+		Usuario usuarioAux = usuarioService.busca(usuarioLogado);
 
-		if (usuarioService.existe(usuarioLogado)) {
+		if (usuarioAux != null && usuarioAux.getId() != null) {
 			msg = "";
-			usuarioLogado = usuarioService.busca(usuarioLogado);
-			return "/templates/principal";
+			usuarioLogado = usuarioAux;
+			return "/private/index";
 		} else {
 
-			Util.msgErro("Dados incorretos", "Acesso n�o permitido");
+			setMsg("Dados incorretos, acesso n�o permitido");
+			setErro(true);
 			return "login";
 		}
 
-	}
-
-	public void setDataAtual(String dataAtual) {
-		this.dataAtual = dataAtual;
 	}
 
 	public String getMsg() {
@@ -96,5 +122,27 @@ public class LoginBean implements Serializable {
 	public Session getSession() {
 		return session;
 	}
+
+	public UsuarioService getUsuarioService() {
+		return usuarioService;
+	}
+
+	public void setUsuarioService(UsuarioService usuarioService) {
+		this.usuarioService = usuarioService;
+	}
+
+	public Boolean getErro() {
+		return erro;
+	}
+
+	public void setErro(Boolean erro) {
+		this.erro = erro;
+	}
+
+	public static Log getLog() {
+		return log;
+	}
+	
+	
 
 }

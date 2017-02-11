@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.jway.dao.UsuarioDao;
 import br.com.jway.model.Usuario;
-import br.com.jway.dao.*;
 import com.uaihebert.uaicriteria.UaiCriteria;
 
 @Named 
@@ -62,6 +61,19 @@ public class UsuarioDaoImpl implements UsuarioDao{
 	@Override
 	public List<Usuario> pesquisa(Usuario usuario){
 		return null;	}
+
+	@Override
+	public Usuario busca(Usuario usuarioLogado) {
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + Usuario.class.getName() + " x ") //
+				.append("WHERE x.login = '" + usuarioLogado.getLogin() + "' " + " AND x.password = '" + usuarioLogado.getPassword() + "' ");
+		try {
+			return em.createQuery(jpql.toString(), Usuario.class).getSingleResult();
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	
 	
 }

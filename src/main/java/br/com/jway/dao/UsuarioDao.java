@@ -20,4 +20,6 @@ public interface UsuarioDao  {
 
 	public List<Usuario> pesquisa(Usuario usuario);
 
+	Usuario busca(Usuario usuarioLogado);
+
 }
