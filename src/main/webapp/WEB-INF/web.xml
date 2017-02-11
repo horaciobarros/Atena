@@ -5,8 +5,9 @@
 
 	<!-- WELCOME FILES -->
 	<welcome-file-list>
-		<welcome-file>private/index.xhtml</welcome-file>
 		<welcome-file>public/login.xhtml</welcome-file>
+		<welcome-file>private/index.xhtml</welcome-file>
+
 	</welcome-file-list>
 
 	<!-- JSF FACES SERVLET -->
@@ -56,31 +57,31 @@
 		<param-name>primefaces.THEME</param-name>
 		<param-value>bootstrap</param-value>
 	</context-param>
-    <error-page>
-        <error-code>403</error-code>
-        <location>/public/403.xhtml</location>
-    </error-page>
-    <error-page>
-        <error-code>404</error-code>
-        <location>/public/404.xhtml</location>
-    </error-page>
-    <error-page>
-        <error-code>500</error-code>
-        <location>/public/erro.xhtml</location>
-    </error-page>
-    <error-page>
-        <exception-type>java.lang.Exception</exception-type>
-        <location>/public/erro.xhtml</location>
-    </error-page>
-    
-    <filter>
-        <filter-name>PrimeFaces FileUpload Filter</filter-name>
-        <filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>PrimeFaces FileUpload Filter</filter-name>
-        <servlet-name>Faces Servlet</servlet-name>
-    </filter-mapping>
-    
+	<error-page>
+		<error-code>403</error-code>
+		<location>/public/403.xhtml</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/public/404.xhtml</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/public/erro.xhtml</location>
+	</error-page>
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/public/erro.xhtml</location>
+	</error-page>
+
+	<filter>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<filter-class>org.primefaces.webapp.filter.FileUploadFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>PrimeFaces FileUpload Filter</filter-name>
+		<servlet-name>Faces Servlet</servlet-name>
+	</filter-mapping>
+
 
 </web-app>

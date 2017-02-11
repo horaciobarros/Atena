@@ -54,4 +54,14 @@ public class UsuarioServiceImpl implements UsuarioService, Serializable{
 	public List<Usuario> pesquisa(Usuario usuario){
 		return dao.pesquisa(usuario);
  	}
+	@Override
+	public boolean existe(Usuario usuarioLogado) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public Usuario busca(Usuario usuarioLogado) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

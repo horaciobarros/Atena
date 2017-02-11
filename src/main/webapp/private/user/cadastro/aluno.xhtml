@@ -70,12 +70,7 @@
 
 								<p:dataTable id='mainDataTable' value='#{alunoBean.items}'
 									var='itemView'>
-
-									<p:column headerText='Matricula' width='30'
-										style='text-align: center;'>
-										<h:outputText value='#{itemView.matricula}' />
-									</p:column>
-
+									
 									<p:column headerText='Nome' width='60'
 										style='text-align: center;'>
 										<h:outputText value='#{itemView.pessoa.nome}' />
@@ -84,6 +79,11 @@
 									<p:column headerText='Cpf' width='14'
 										style='text-align: center;'>
 										<h:outputText value='#{itemView.pessoa.cpf}' />
+									</p:column>
+
+									<p:column headerText='Matricula' width='30'
+										style='text-align: center;'>
+										<h:outputText value='#{itemView.matricula}' />
 									</p:column>
 
 									<p:column headerText='Situacao' width='10'

@@ -19,4 +19,8 @@ public interface UsuarioService extends Serializable {
 	public Usuario read(long id);
 
 	public List<Usuario> pesquisa(Usuario usuario);
+
+	public boolean existe(Usuario usuarioLogado);
+
+	public Usuario busca(Usuario usuarioLogado);
 }
