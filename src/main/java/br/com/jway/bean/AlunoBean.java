@@ -97,7 +97,7 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 	}
 
 	public void pesquisa() {
-		items = service.pesquisa(item);
+		items = service.pesquisa(itemFilter);
 	}
 
 	public void limpaPesquisa() {

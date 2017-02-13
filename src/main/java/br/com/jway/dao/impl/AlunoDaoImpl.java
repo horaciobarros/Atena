@@ -70,7 +70,26 @@ public class AlunoDaoImpl implements AlunoDao{
 	}
 	@Override
 	public List<Aluno> pesquisa(Aluno aluno){
-		return null;	}
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + Aluno.class.getName() + " x ") //
+				.append("INNER JOIN x.pessoa p ") //
+				.append("WHERE 1 = 1 ");
+				if (aluno.getMatricula() != null && !aluno.getMatricula().isEmpty()) {
+					jpql.append("AND x.matricula LIKE '%" + aluno.getMatricula() + "%' ");
+				}
+				if (aluno.getPessoa() != null && aluno.getPessoa().getId() != null) {
+					jpql.append("AND x.pessoa.id = " + aluno.getPessoa().getId() + " ");
+				} else {
+					if (aluno.getPessoa() != null && aluno.getPessoa().getCpf() != null) {
+						jpql.append("AND x.pessoa.cpf LIKE '%" + aluno.getPessoa().getCpf() + "%' "); 
+					}
+				}
+				
+				jpql.append("ORDER BY x.id ASC ");
+				
+			return em.createQuery(jpql.toString(), Aluno.class).getResultList();
+	}
 	
 	
 }

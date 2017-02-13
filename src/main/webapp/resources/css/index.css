@@ -25,29 +25,110 @@ html, body {
 }
 
 .wrapper {
-	max-width: 92em;
 	margin: 0 auto !important;
 }
 
-.ui-grid.ui-grid-form .ui-grid-row:not (:last-child ) {
-	padding: 0 0 0.5em 0;
+.ui-grid
+.ui-grid-form
+ 
+.ui-grid-row
+:not
+ 
+(
+:last-child
+ 
+)
+{
+padding
+:
+ 
+0
+0
+0
+.5em
+ 
+0;
 }
+.ui-grid
+.ui-grid-form
+ 
+.ui-grid-row
+ 
+[
+class
+^=
+'ui-grid-col-'
+]
+:not
+ 
+(
+:last-child
 
-.ui-grid.ui-grid-form .ui-grid-row [class^='ui-grid-col-']:not (:last-child
-	) {
-	padding: 0 0.5em 0 0;
+	
+)
+{
+padding
+:
+ 
+0
+0
+.5em
+ 
+0
+0;
 }
-
 @media ( max-width : 35em) {
-	.ui-grid.ui-grid-form .ui-grid-row:not (:last-child ) {
-		padding: 0 0 0.5em 0;
-	}
-	.ui-grid.ui-grid-form .ui-grid-row [class^='ui-grid-col-']:not (:last-child
-		) {
-		padding: 0 0 0.5em 0;
-	}
+	.ui-grid
+	.ui-grid-form
+	 
+	.ui-grid-row
+	:not
+	 
+	(
+	:last-child
+	 
+	)
+	{
+	padding
+	:
+	 
+	0
+	0
+	0
+	.5em
+	 
+	0;
 }
 
+.ui-grid
+.ui-grid-form
+ 
+.ui-grid-row
+ 
+[
+class
+^=
+'ui-grid-col-'
+]
+:not
+ 
+(
+:last-child
+
+		
+)
+{
+padding
+:
+ 
+0
+0
+0
+.5em
+ 
+0;
+}
+}
 .ui-grid.ui-grid-form input, .ui-grid.ui-grid-form label {
 	box-sizing: border-box;
 	display: block;
@@ -57,7 +138,9 @@ html, body {
 	width: 100%;
 }
 
-p { text-align: center }
+p {
+	text-align: center
+}
 
 .footer {
 	position: absolute;
@@ -69,17 +152,14 @@ p { text-align: center }
 }
 
 .cssNome {
-
-            width: 150px;
-
+	width: 150px;
 }
 
- 
-
-.cssLabel {
-
-            Width: 100px;
-
+.col1Pesquisa {
+	width: 100px;
 }
 
- 
+.col2Pesquisa {
+	width: 400px;
+}
+
