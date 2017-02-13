@@ -8,7 +8,7 @@ import br.com.jway.model.Uf;
 public interface UfDao {
 	List<Uf> list();
 
-	Uf read(long id);
+	Uf read(String uf);
 
 	void create(Uf uf);
 

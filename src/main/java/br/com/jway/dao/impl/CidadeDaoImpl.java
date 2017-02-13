@@ -3,23 +3,31 @@ package br.com.jway.dao.impl;
 import java.util.List;
 
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import br.com.jway.dao.CidadeDao;
 import br.com.jway.model.Cidade;
+import br.com.jway.model.Uf;
 
 @Named
 public class CidadeDaoImpl implements CidadeDao{
+	
+	@PersistenceContext 
+	protected EntityManager em;
 
 	@Override
 	public List<Cidade> list() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + Cidade.class.getName() + " x ") //
+				.append("ORDER BY x.municipio ");
+			return em.createQuery(jpql.toString(), Cidade.class).getResultList();
 	}
 
 	@Override
-	public Cidade read(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Cidade read(String codigo) {
+		return em.find(Cidade.class, codigo);
 	}
 
 	@Override

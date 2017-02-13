@@ -1,27 +1,23 @@
 package br.com.jway.model;
 
-import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table
-public class Uf   implements Serializable{
+@Table(name="uf")
+public class Uf {
 	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	@Id
-	private String codigo;
+	private String uf;
 	private String descricao;
-	public String getCodigo() {
-		return codigo;
+	
+	public String getUf() {
+		return uf;
 	}
-	public void setCodigo(String codigo) {
-		this.codigo = codigo;
+	public void setUf(String uf) {
+		this.uf = uf;
 	}
 	public String getDescricao() {
 		return descricao;
@@ -33,8 +29,8 @@ public class Uf   implements Serializable{
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
 		return result;
 	}
 	@Override
@@ -46,18 +42,19 @@ public class Uf   implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		Uf other = (Uf) obj;
-		if (codigo == null) {
-			if (other.codigo != null)
-				return false;
-		} else if (!codigo.equals(other.codigo))
-			return false;
 		if (descricao == null) {
 			if (other.descricao != null)
 				return false;
 		} else if (!descricao.equals(other.descricao))
 			return false;
+		if (uf == null) {
+			if (other.uf != null)
+				return false;
+		} else if (!uf.equals(other.uf))
+			return false;
 		return true;
 	}
+
 	
 	
 

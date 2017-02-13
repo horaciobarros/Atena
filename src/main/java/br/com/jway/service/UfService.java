@@ -16,7 +16,7 @@ public interface UfService extends Serializable {
 
 	public void delete(long id);
 
-	public Uf read(long id);
+	public Uf read(String uf);
 
 	public List<Uf> pesquisa(Uf uf);
 

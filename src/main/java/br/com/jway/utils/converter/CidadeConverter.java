@@ -11,19 +11,19 @@ import javax.faces.convert.ConverterException;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import br.com.jway.model.Uf;
-import br.com.jway.service.UfService;
+import br.com.jway.model.Cidade;
+import br.com.jway.service.CidadeService;
 
 
 @ManagedBean
 @ViewScoped
 @Named
-public class UfConverter implements Converter, Serializable{
+public class CidadeConverter implements Converter, Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private UfService service;
+	private CidadeService service;
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -33,11 +33,11 @@ public class UfConverter implements Converter, Serializable{
 		try {
 			String id = value;
 			Object object = service.read(id);
-			System.out.println("Convertendo UF");
+			System.out.println("Convertendo Cidade");
 			return object;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ConverterException("N�o foi poss�vel encontrar a Ufl de id: " + value + ". " + e.getMessage());
+			throw new ConverterException("N�o foi poss�vel encontrar a Cidade  de id: " + value + ". " + e.getMessage());
 		}
 	
 	
@@ -46,9 +46,9 @@ public class UfConverter implements Converter, Serializable{
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,Object value) {
 		if (value != null && value != "") {
-			Uf uf = (Uf) value;
-			System.out.println("ID: " + uf.getUf());
-			return uf.getUf() + "";
+			Cidade cidade = (Cidade) value;
+			System.out.println("ID: " + cidade.getCodigo());
+			return cidade.getCodigo() + "";
 		}
 		return null;
 	}

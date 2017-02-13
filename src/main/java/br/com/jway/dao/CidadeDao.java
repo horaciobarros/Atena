@@ -7,7 +7,7 @@ import br.com.jway.model.Cidade;
 public interface CidadeDao {
 	List<Cidade> list();
 
-	Cidade read(long id);
+	Cidade read(String codigo);
 
 	void create(Cidade cidade);
 

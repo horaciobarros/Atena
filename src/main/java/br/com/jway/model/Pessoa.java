@@ -174,8 +174,9 @@ public class Pessoa implements Serializable {
 	@Column(name="cep")
 	private String cep;
 
-	@Column(name="cidade")
-	private String cidade;
+	@ManyToOne
+	@JoinColumn(name="cidade")
+	private Cidade cidade;
 
 	@Column(name="complemento")
 	private String complemento;
@@ -207,8 +208,9 @@ public class Pessoa implements Serializable {
 	@Column(name="telefone_fixo")
 	private String telefoneFixo;
 
-	@Column(name="uf")
-	private String uf;
+	@ManyToOne
+	@JoinColumn(name="uf")
+	private Uf uf;
 
 	@Column(name="tenancy")
 	private Long tenancy;
@@ -260,10 +262,10 @@ public class Pessoa implements Serializable {
 		this.cep = cep;
 	}
 
-	public String getCidade() { 
+	public Cidade getCidade() { 
 		return cidade;
 	}
-	public void  setCidade(String cidade) { 
+	public void  setCidade(Cidade cidade) { 
 		this.cidade = cidade;
 	}
 
@@ -337,10 +339,10 @@ public class Pessoa implements Serializable {
 		this.telefoneFixo = telefoneFixo;
 	}
 
-	public String getUf() { 
+	public Uf getUf() { 
 		return uf;
 	}
-	public void  setUf(String uf) { 
+	public void  setUf(Uf uf) { 
 		this.uf = uf;
 	}
 

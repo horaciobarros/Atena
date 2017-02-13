@@ -2,8 +2,11 @@ package br.com.jway.service.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import br.com.jway.dao.CidadeDao;
+import br.com.jway.dao.UfDao;
 import br.com.jway.model.Cidade;
 import br.com.jway.service.CidadeService;
 
@@ -13,7 +16,12 @@ public class CidadeServiceImpl implements CidadeService{
 	/**
 	 * 
 	 */
+	
+	@Inject
+	private CidadeDao dao;
+	
 	private static final long serialVersionUID = 1L;
+	
 
 	@Override
 	public void create(Cidade cidade) {
@@ -35,8 +43,7 @@ public class CidadeServiceImpl implements CidadeService{
 
 	@Override
 	public List<Cidade> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.list();
 	}
 
 	@Override
@@ -46,9 +53,8 @@ public class CidadeServiceImpl implements CidadeService{
 	}
 
 	@Override
-	public Cidade read(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Cidade read(String codigo) {
+		return dao.read(codigo);
 	}
 
 	@Override

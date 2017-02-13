@@ -3,23 +3,32 @@ package br.com.jway.dao.impl;
 import java.util.List;
 
 import javax.inject.Named;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 import br.com.jway.dao.UfDao;
+import br.com.jway.model.Aluno;
 import br.com.jway.model.Uf;
 
 @Named 
 public class UfDaoImpl implements UfDao {
+	
+
+	@PersistenceContext 
+	protected EntityManager em;
 
 	@Override
 	public List<Uf> list() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + Uf.class.getName() + " x ") //
+				.append("ORDER BY x.uf ");
+			return em.createQuery(jpql.toString(), Uf.class).getResultList();
 	}
 
 	@Override
-	public Uf read(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Uf read(String uf) {
+		return em.find(Uf.class, uf);
 	}
 
 	@Override

@@ -20,9 +20,13 @@ import org.primefaces.model.StreamedContent;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import br.com.jway.model.Aluno;
+import br.com.jway.model.Cidade;
 import br.com.jway.model.Pessoa;
+import br.com.jway.model.Uf;
 import br.com.jway.service.AlunoService;
+import br.com.jway.service.CidadeService;
 import br.com.jway.service.PessoaService;
+import br.com.jway.service.UfService;
 import br.com.jway.util.FacesUtils;
 
 @ManagedBean
@@ -39,9 +43,16 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 	private String state;
 	private List<Aluno> items;
 	private List<Pessoa> listaPessoa;
+	private List<Uf> ufs;
+	private List<Cidade> cidades;
 
 	@Inject
 	private PessoaService pessoaService;
+	@Inject
+	private UfService ufService;
+	@Inject
+	private CidadeService cidadeService;
+	
 	private Aluno item;
 	private Aluno itemFilter;
 
@@ -58,6 +69,8 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		state = "READ";
 		items = service.list();
 		listaPessoa = pessoaService.list();
+		ufs = ufService.list();
+		cidades = cidadeService.list();
 	}
 
 	public void clearItems() {
@@ -171,5 +184,29 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 			System.out.println("Erro em evento de upload");
 		}
 	}
+
+	public List<Uf> getUfs() {
+		return ufs;
+	}
+
+	public void setUfs(List<Uf> ufs) {
+		this.ufs = ufs;
+	}
+	
+	public void refleshUf() {
+		
+	}
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
+	}
+	
+	
+	
+	
 
 }

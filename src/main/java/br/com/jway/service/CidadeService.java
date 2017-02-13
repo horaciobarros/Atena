@@ -18,7 +18,7 @@ public interface CidadeService extends Serializable{
 
 	public void delete(long id);
 
-	public Cidade read(long id);
+	public Cidade read(String codigo);
 
 	public List<Cidade> pesquisa(Cidade cidade);
 

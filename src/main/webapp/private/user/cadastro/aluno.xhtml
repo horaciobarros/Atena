@@ -24,14 +24,14 @@
 
 						<h:panelGrid columns="11">
 
-							<h:outputText value='Matricula:' for="componente2" />
+							<h:outputLabel value='Matricula:' for="componente2" />
 							<p:spacer width="10" />
 							<p:inputText id='componente2'
 								value='#{alunoBean.itemFilter.matricula}' maxlength="8" size="8">
 							</p:inputText>
 							<p:spacer width="50" />
 
-							<h:outputText value='Cpf:' />
+							<h:outputLabel value='Cpf:' />
 							<p:spacer width="10" />
 							<p:inputText id='componente3'
 								value='#{alunoBean.itemFilter.pessoa.cpf}' maxlength="15"
@@ -39,7 +39,7 @@
 							</p:inputText>
 							<p:spacer width="50" />
 
-							<h:outputText value='Nome:' />
+							<h:outputLabel value='Nome:' />
 							<p:spacer width="10" />
 							<p:selectOneMenu id='componente5'
 								value='#{alunoBean.itemFilter.pessoa}' label='Nome:'
@@ -73,21 +73,21 @@
 
 							<p:column headerText='Nome' width='60'
 								style='text-align: center;'>
-								<h:outputText value='#{itemView.pessoa.nome}' />
+								<h:outputLabel value='#{itemView.pessoa.nome}' />
 							</p:column>
 
 							<p:column headerText='Cpf' width='14' style='text-align: center;'>
-								<h:outputText value='#{itemView.pessoa.cpf}' />
+								<h:outputLabel value='#{itemView.pessoa.cpf}' />
 							</p:column>
 
 							<p:column headerText='Matricula' width='30'
 								style='text-align: center;'>
-								<h:outputText value='#{itemView.matricula}' />
+								<h:outputLabel value='#{itemView.matricula}' />
 							</p:column>
 
 							<p:column headerText='Situacao' width='10'
 								style='text-align: center;'>
-								<h:outputText value='#{itemView.situacao}' />
+								<h:outputLabel value='#{itemView.situacao}' />
 							</p:column>
 
 
@@ -119,10 +119,10 @@
 						<div class='ui-grid-col-12'>
 							<p:panel id='editPanel'>
 								<f:facet name='header'>
-									<h:outputText
+									<h:outputLabel
 										value="#{i18n['operations.create']} #{i18n['aluno']}"
 										rendered="#{alunoBean.state eq 'CREATE'}" />
-									<h:outputText
+									<h:outputLabel
 										value="#{i18n['operations.update']} #{i18n['aluno']}"
 										rendered="#{alunoBean.state eq 'UPDATE'}" />
 								</f:facet>
@@ -139,13 +139,13 @@
 
 									<p:panel id='editPanel2'>
 										<f:facet name='header'>
-											<h:outputText value="Dados pessoais" />
+											<h:outputLabel value="Dados pessoais" />
 										</f:facet>
 
 										<h:panelGrid columns="9">
 
 											<h:form enctype="multipart/form-data">
-												<h:outputText value="Foto" />
+												<h:outputLabel value="Foto" />
 												<p:graphicImage value="#{alunoBean.imagem}" id="imagem"
 													width="100" height="80" />
 												<p:fileUpload sizeLimit="900000" auto="true"
@@ -156,15 +156,15 @@
 											</h:form>
 
 											<p:spacer width="50" />
-											
-											<h:outputText value='Cpf:' styleClass="cssLabel" />
-											<p:spacer width="10"  />
+
+											<h:outputLabel value='Cpf:' styleClass="cssLabel" />
+											<p:spacer width="10" />
 											<p:inputMask id='componente27'
 												value='#{alunoBean.item.pessoa.cpf}' mask="999.999.999-99">
 											</p:inputMask>
 
 											<p:spacer width="50" />
-											<h:outputText value='Nome:' />
+											<h:outputLabel value='Nome:' />
 											<p:spacer width="10" />
 											<p:inputText id='componente30'
 												value='#{alunoBean.item.pessoa.nome}' size="80">
@@ -174,18 +174,18 @@
 
 										<h:panelGrid columns="6">
 
-											<h:outputText value='Nome Mae:' />
+											<h:outputLabel value='Nome Mae:' />
 											<p:inputText id='componente31'
 												value='#{alunoBean.item.pessoa.nomeMae}' size="80">
 											</p:inputText>
-											<p:spacer width="10"  />
-											<h:outputText value='Nome Pai:' />
-											<p:spacer width="10"  />
+											<p:spacer width="10" />
+											<h:outputLabel value='Nome Pai:' />
+											<p:spacer width="10" />
 											<p:inputText id='componente32'
 												value='#{alunoBean.item.pessoa.nomePai}' size="80">
 											</p:inputText>
 
-											<h:outputText value='Data Nascimento:' />
+											<h:outputLabel value='Data Nascimento:' />
 											<p:calendar id='componente20'
 												value='#{alunoBean.item.pessoa.dataNascimento}'
 												style="width: 20% important!" pattern="dd-MM-yyyy"
@@ -196,70 +196,82 @@
 
 									<p:panel id='editPanel3'>
 										<f:facet name='header'>
-											<h:outputText value="Endereço" />
+											<h:outputLabel value="Endereço" />
 										</f:facet>
 
 
 										<h:panelGrid columns="5">
-											<h:outputText value='Rua/Av:' />
+											<h:outputLabel value='Rua/Av:' />
 											<p:inputText id='componente29'
 												value='#{alunoBean.item.pessoa.endereco}' size="80">
 											</p:inputText>
-											<p:spacer width="10"  />
-											<h:outputText value='Numero:' />
+											<p:spacer width="10" />
+											<h:outputLabel value='Numero:' />
 											<p:inputText id='componente33'
 												value='#{alunoBean.item.pessoa.numero}' style="width: 20%">
 											</p:inputText>
-											<h:outputText value='Complemento:' />
+											<h:outputLabel value='Complemento:' />
 											<p:inputText id='componente26'
 												value='#{alunoBean.item.pessoa.complemento}'
 												style="width: 20%">
 											</p:inputText>
 
-											<p:spacer width="10"  />
-											<h:outputText value='Bairro:' />
+											<p:spacer width="10" />
+											<h:outputLabel value='Bairro:' />
 											<p:inputText id='componente22'
 												value='#{alunoBean.item.pessoa.bairro}' size="40">
 											</p:inputText>
-											<h:outputText value='Cidade:' />
-											<p:inputText id='componente25'
-												value='#{alunoBean.item.pessoa.cidade}' size="30">
-											</p:inputText>
-											<p:spacer width="10"  />
-											<h:outputText value='Uf:' />
-											<p:inputText id='componente36'
-												value='#{alunoBean.item.pessoa.uf}' size="2">
-											</p:inputText>
-											<h:outputText value='Cep:' />
+
+											<h:outputLabel value='Uf:' />
+											<h:selectOneMenu required="true"
+												value="#{alunoBean.item.pessoa.uf}" id="uf" converter='#{ufConverter}'>
+												<f:selectItems value="#{alunoBean.ufs}"
+													var="uf" itemLabel="#{uf.descricao}"
+													itemValue="#{uf}" />
+												<p:ajax listener="#{uf.refreshUf}"
+													event="change" update="cidade" process="uf" />
+											</h:selectOneMenu>
+
+											<h:outputLabel value='Cidade:' />
+											<h:selectOneMenu required="true"
+												value="#{alunoBean.item.pessoa.cidade}" id="cidade" converter='#{cidadeConverter}'>
+												<f:selectItems value="#{alunoBean.cidades}"
+													var="cidade" itemLabel="#{cidade.municipio}"
+													itemValue="#{cidade}" />
+											</h:selectOneMenu>
+											<p:spacer width="10" />
+
+											<h:outputLabel value='Cep:' />
 											<p:inputMask id='componente24'
-												value='#{alunoBean.item.pessoa.cep}' size="10" mask="99999-999">
+												value='#{alunoBean.item.pessoa.cep}' size="10"
+												mask="99999-999">
 											</p:inputMask>
 										</h:panelGrid>
 									</p:panel>
 
 									<p:panel id='editPanel4'>
 										<f:facet name='header'>
-											<h:outputText value="Dados para contato" />
+											<h:outputLabel value="Dados para contato" />
 										</f:facet>
 										<h:panelGrid columns="11">
 
 
-											<h:outputText value='Celular:' />
-											<p:spacer width="10"  />
+											<h:outputLabel value='Celular:' />
+											<p:spacer width="10" />
 											<p:inputMask id='componente23' mask="(99)99999-9999"
 												value='#{alunoBean.item.pessoa.celular}' size="12">
 											</p:inputMask>
-											
-											<p:spacer width="50"  />
-											<h:outputText value='Telefone Fixo:' />
-											<p:spacer width="10"  />
+
+											<p:spacer width="50" />
+											<h:outputLabel value='Telefone Fixo:' />
+											<p:spacer width="10" />
 											<p:inputMask id='componente35' mask="(99)99999-9999"
 												value='#{alunoBean.item.pessoa.telefoneFixo}' size="12">
 											</p:inputMask>
-											
-											<p:spacer width="50"  />
-											<h:outputText value='Email:' />
-											<p:spacer width="10"  />
+
+											<p:spacer width="50" />
+											<h:outputLabel value='Email:' />
+											<p:spacer width="10" />
 											<p:inputText id='componente28'
 												value='#{alunoBean.item.pessoa.email}' size="80">
 											</p:inputText>

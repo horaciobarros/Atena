@@ -5,7 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
+import br.com.jway.dao.UfDao;
 import br.com.jway.model.Uf;
 import br.com.jway.service.UfService;
 
@@ -13,6 +13,9 @@ import br.com.jway.service.UfService;
 public class UfServiceImpl implements UfService, Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private UfDao dao;
 
 	@Override
 	public void create(Uf uf) {
@@ -34,8 +37,7 @@ public class UfServiceImpl implements UfService, Serializable {
 
 	@Override
 	public List<Uf> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.list();
 	}
 
 	@Override
@@ -45,9 +47,8 @@ public class UfServiceImpl implements UfService, Serializable {
 	}
 
 	@Override
-	public Uf read(long id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Uf read(String uf) {
+		return dao.read(uf);
 	}
 
 	@Override
