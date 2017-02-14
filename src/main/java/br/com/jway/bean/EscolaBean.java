@@ -25,6 +25,13 @@ public  class EscolaBean extends SpringBeanAutowiringSupport implements Serializ
 
 	@Inject
 	private EscolaService service;
+	@Inject
+	private UfService ufService;
+	@Inject
+	private CidadeService cidadeService;
+	
+	private List<Uf> ufs;
+	private List<Cidade> cidades;
 	
 	private String state;
 	private List<Escola> items;
@@ -44,6 +51,8 @@ public  class EscolaBean extends SpringBeanAutowiringSupport implements Serializ
 		log.info("Bean @PostConstruct called.");
 		state = "READ";
 		items = service.list();
+		ufs = ufService.list();
+		cidades = cidadeService.list();
 	}
 	
 	public void clearItems() {
@@ -124,6 +133,27 @@ public  class EscolaBean extends SpringBeanAutowiringSupport implements Serializ
 	
 	public void setItemFilter(Escola itemFilter) {
 		this.itemFilter = itemFilter;
+	}
+	
+	public List<Uf> getUfs() {
+		return ufs;
+	}
+
+	public void setUfs(List<Uf> ufs) {
+		this.ufs = ufs;
+	}
+	
+	public void refreshUf() {
+		cidades = cidadeService.findByUf(item.getUf());
+		
+	}
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
 	}
 
 

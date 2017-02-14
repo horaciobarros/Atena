@@ -40,8 +40,9 @@ public class Escola implements Serializable {
 	@Column(name="cep")
 	private String cep;
 
-	@Column(name="cidade")
-	private String cidade;
+	@ManyToOne
+	@JoinColumn(name="cidade")
+	private Cidade cidade;
 
 	@Column(name="cnpj")
 	private String cnpj;
@@ -79,8 +80,9 @@ public class Escola implements Serializable {
 	@Column(name="telefone_fixo1")
 	private String telefoneFixo1;
 
-	@Column(name="uf")
-	private String uf;
+	@ManyToOne
+	@JoinColumn(name="uf")
+	private Uf uf;
 
 	@Column(name="tenancy")
 	private Long tenancy;
@@ -127,10 +129,10 @@ public class Escola implements Serializable {
 		this.cep = cep;
 	}
 
-	public String getCidade() { 
+	public Cidade getCidade() { 
 		return cidade;
 	}
-	public void  setCidade(String cidade) { 
+	public void  setCidade(Cidade cidade) { 
 		this.cidade = cidade;
 	}
 
@@ -218,10 +220,10 @@ public class Escola implements Serializable {
 		this.telefoneFixo1 = telefoneFixo1;
 	}
 
-	public String getUf() { 
+	public Uf getUf() { 
 		return uf;
 	}
-	public void  setUf(String uf) { 
+	public void  setUf(Uf uf) { 
 		this.uf = uf;
 	}
 

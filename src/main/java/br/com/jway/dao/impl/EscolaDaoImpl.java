@@ -1,6 +1,8 @@
 package br.com.jway.dao.impl; 
 
 import java.util.List;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,11 +10,15 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.jway.dao.EscolaDao;
 import br.com.jway.model.Escola;
+import br.com.jway.service.TenancyService;
 import br.com.jway.dao.*;
 import com.uaihebert.uaicriteria.UaiCriteria;
 
 @Named 
 public class EscolaDaoImpl implements EscolaDao{
+	
+	@Inject
+	private TenancyService tenancyService;
 
 	private static final long serialVersionUID = 1L;
 
@@ -38,6 +44,7 @@ public class EscolaDaoImpl implements EscolaDao{
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(Escola escola) {
+		escola.setTenancy(tenancyService.getTenancyDaSessao());
 		em.persist(escola);
 	}
 	

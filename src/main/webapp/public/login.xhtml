@@ -13,6 +13,7 @@
 <h:body style="background-position: 50% 0%;background-repeat: no-repeat">
         <p:dialog header="Login" visible="true" closable="false" draggable="false" resizable="false" width="420">
         
+        
             <center>
                 <h:outputText value="Usuário ou senha incorretos!" rendered="#{loginBean.erro}" style="color: darkred"/>
             </center>
@@ -20,7 +21,7 @@
 				<p:messages id="messages" showDetail="true" autoUpdate="true"
 					closable="true" />
 				<p:panelGrid id="panelLogin" columns="2" 
-					style="margin-top:50px; margin-left:50px; background-color: transparent !important;"  >
+					style="margin-top:30px; margin-left:50px; background-color: transparent !important;"  >
 					<f:facet name="header">
 						<p:panelGrid columns="1">
 							<h:outputLabel value="Atena - Sistema de Gestão Educacional " />
