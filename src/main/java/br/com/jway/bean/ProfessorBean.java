@@ -35,6 +35,15 @@ public  class ProfessorBean extends SpringBeanAutowiringSupport implements Seria
 	private String state;
 	private List<Professor> items;
 	private List<Pessoa> listaPessoa;
+	
+	private List<Uf> ufs;
+	private List<Cidade> cidades;
+
+	@Inject
+	private UfService ufService;
+	@Inject
+	private CidadeService cidadeService;
+
 
 	private Pessoa Pessoa;
 
@@ -60,6 +69,8 @@ public  class ProfessorBean extends SpringBeanAutowiringSupport implements Seria
 		log.info("Bean @PostConstruct called.");
 		state = "READ";
 		items = service.list();
+		ufs = ufService.list();
+		cidades = cidadeService.list();
 	}
 	
 	public void clearItems() {
@@ -184,6 +195,27 @@ public  class ProfessorBean extends SpringBeanAutowiringSupport implements Seria
 		} catch (IOException ex) {
 			System.out.println("Erro em evento de upload");
 		}
+	}
+	
+	public List<Uf> getUfs() {
+		return ufs;
+	}
+
+	public void setUfs(List<Uf> ufs) {
+		this.ufs = ufs;
+	}
+	
+	public void refreshUf() {
+		cidades = cidadeService.findByUf(item.getPessoa().getUf());
+		
+	}
+
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
 	}
 
 }

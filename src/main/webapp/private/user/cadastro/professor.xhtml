@@ -27,13 +27,13 @@
 									value='#{professorBean.itemFilter.id}'>
 								</h:inputHidden>
 
-								<h:outputText value='Pessoa:' />
+								<h:outputLabel value='Pessoa:' />
 								<p:selectOneMenu id='componente3'
 									value='#{professorBean.itemFilter.pessoa}' label='Pessoa'
 									converter='#{pessoaConverter}'>
 									<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 									<f:selectItems value='#{professorBean.listaPessoa}' var='item'
-										itemValue='#{item}' itemLabel='#{item.id}' />
+										itemValue='#{item}' itemLabel='#{item.nome}' />
 								</p:selectOneMenu>
 								<div align="right">
 									<p:commandButton value='Pesquisar' id='buttonPesquisa'
@@ -59,12 +59,12 @@
 
 									<p:column headerText='Nome' width='60'
 										style='text-align: center;'>
-										<h:outputText value='#{itemView.pessoa.nome}' />
+										<h:outputLabel value='#{itemView.pessoa.nome}' />
 									</p:column>
 
 									<p:column headerText='Cpf' width='14'
 										style='text-align: center;'>
-										<h:outputText value='#{itemView.pessoa.cpf}' />
+										<h:outputLabel value='#{itemView.pessoa.cpf}' />
 									</p:column>
 
 									<p:column headerText="#{i18n['operations']}" width='5'
@@ -98,10 +98,10 @@
 						<div class='ui-grid-col-12'>
 							<p:panel id='editPanel'>
 								<f:facet name='header'>
-									<h:outputText
+									<h:outputLabel
 										value="#{i18n['operations.create']} #{i18n['professor']}"
 										rendered="#{professorBean.state eq 'CREATE'}" />
-									<h:outputText
+									<h:outputLabel
 										value="#{i18n['operations.update']} #{i18n['professor']}"
 										rendered="#{professorBean.state eq 'UPDATE'}" />
 								</f:facet>
@@ -116,16 +116,13 @@
 								<h:panelGrid columns="1">
 
 									<p:panel id='editPanel2'>
-										<f:facet name='header'>
-											<h:outputText value="Dados pessoais" />
-										</f:facet>
 
-										<h:panelGrid columns="6">
+										<h:panelGrid columns="9">
 
 											<h:form enctype="multipart/form-data">
-												<h:outputText value="Foto" />
+												<h:outputLabel value="Foto" />
 												<p:graphicImage value="#{professorBean.imagem}" id="imagem"
-													width="150" height="100" />
+													width="150" height="130" />
 												<p:fileUpload sizeLimit="900000" auto="true"
 													id="fileUploadId" widgetVar="uploader" label="Procurar..."
 													fileUploadListener="#{professorBean.handleFileUpload}"
@@ -133,96 +130,100 @@
 													update="imagem" multiple="false" />
 											</h:form>
 
-											<h:outputText value='Cpf:' styleClass="cssLabel" />
+											<p:spacer width="50" />
+
+											<h:outputLabel value='Cpf:' styleClass="cssLabel" />
+											<p:spacer width="10" />
 											<p:inputMask id='componente27'
-												value='#{professorBean.item.pessoa.cpf}' 
-												mask="999.999.999-99">
+												value='#{professorBean.item.pessoa.cpf}' mask="999.999.999-99">
 											</p:inputMask>
 
-											<h:outputText value='Nome:' />
+											<p:spacer width="50" />
+											<h:outputLabel value='Nome:' />
+											<p:spacer width="10" />
 											<p:inputText id='componente30'
 												value='#{professorBean.item.pessoa.nome}' size="80">
 											</p:inputText>
 
 										</h:panelGrid>
 
-										<h:panelGrid columns="4">
+										<h:panelGrid columns="5">
 
-											<h:outputText value='Nome Mae:' />
+											<h:outputLabel value='Nome Mae:' />
 											<p:inputText id='componente31'
 												value='#{professorBean.item.pessoa.nomeMae}' size="80">
 											</p:inputText>
-											<h:outputText value='Nome Pai:' />
+											<p:spacer width="10" />
+											<h:outputLabel value='Nome Pai:' />
 											<p:inputText id='componente32'
 												value='#{professorBean.item.pessoa.nomePai}' size="80">
 											</p:inputText>
-											
-											<h:outputText value='Data Nascimento:' />
+
+											<h:outputLabel value='Data Nascimento:' />
 											<p:calendar id='componente20'
 												value='#{professorBean.item.pessoa.dataNascimento}'
 												style="width: 20% important!" pattern="dd-MM-yyyy"
 												mask="true">
 											</p:calendar>
-										</h:panelGrid>
-									</p:panel>
-
-									<p:panel id='editPanel3'>
-										<f:facet name='header'>
-											<h:outputText value="Endereço" />
-										</f:facet>
-
-
-										<h:panelGrid columns="4">
-											<h:outputText value='Rua/Av:' />
-											<p:inputText id='componente29' 
+											<p:spacer width="10" />
+											<h:outputLabel value='Cep:' />
+											<p:inputMask id='componente24'
+												value='#{professorBean.item.pessoa.cep}' size="10"
+												mask="99999-999">
+											</p:inputMask>
+											
+											<h:outputLabel value='Rua/Av:' />
+											<p:inputText id='componente29'
 												value='#{professorBean.item.pessoa.endereco}' size="80">
 											</p:inputText>
-											<h:outputText value='Numero:' />
+											<p:spacer width="10" />
+											<h:outputLabel value='Numero:' />
 											<p:inputText id='componente33'
-												value='#{professorBean.item.pessoa.numero}'
-												style="width: 20%">
+												value='#{professorBean.item.pessoa.numero}' style="width: 20%">
 											</p:inputText>
-											<h:outputText value='Complemento:' />
+											<h:outputLabel value='Complemento:' />
 											<p:inputText id='componente26'
 												value='#{professorBean.item.pessoa.complemento}'
 												style="width: 20%">
 											</p:inputText>
-
-											<h:outputText value='Bairro:' />
+											<p:spacer width="10" />
+											<h:outputLabel value='Bairro:' />
 											<p:inputText id='componente22'
 												value='#{professorBean.item.pessoa.bairro}' size="40">
 											</p:inputText>
-											<h:outputText value='Cidade:' />
-											<p:inputText id='componente25'
-												value='#{professorBean.item.pessoa.cidade}' size="30">
-											</p:inputText>
-											<h:outputText value='Uf:' />
-											<p:inputText id='componente36'
-												value='#{professorBean.item.pessoa.uf}' size="2">
-											</p:inputText>
-											<h:outputText value='Cep:' />
-											<p:inputText id='componente24'
-												value='#{professorBean.item.pessoa.cep}' size="10">
-											</p:inputText>
-										</h:panelGrid>
-									</p:panel>
 
-									<p:panel id='editPanel4'>
-										<f:facet name='header'>
-											<h:outputText value="Dados para contato" />
-										</f:facet>
-										<h:panelGrid columns="6">
-										
 
-											<h:outputText value='Celular:' />
-											<p:inputText id='componente23'
-												value='#{professorBean.item.pessoa.celular}' size="10">
-											</p:inputText>
-											<h:outputText value='Telefone Fixo:' />
-											<p:inputText id='componente35'
-												value='#{professorBean.item.pessoa.telefoneFixo}' size="10">
-											</p:inputText>
-											<h:outputText value='Email:' />
+											<h:outputLabel value='Uf:' />
+											<h:selectOneMenu required="true"
+												value="#{professorBean.item.pessoa.uf}" id="uf" converter='#{ufConverter}'>
+												<f:selectItems value="#{professorBean.ufs}"
+													var="uf" itemLabel="#{uf.descricao}"
+													itemValue="#{uf}" />
+												<p:ajax listener="#{professorBean.refreshUf}"
+													event="change" update="cidade" process="uf" />
+											</h:selectOneMenu>
+											<p:spacer width="10" />
+											<h:outputLabel value='Cidade:' />
+											<h:selectOneMenu required="true"
+												value="#{professorBean.item.pessoa.cidade}" id="cidade" converter='#{cidadeConverter}'>
+												<f:selectItems value="#{professorBean.cidades}"
+													var="cidade" itemLabel="#{cidade.municipio}"
+													itemValue="#{cidade}" />
+											</h:selectOneMenu>
+
+											
+
+											<h:outputLabel value='Celular:' />
+											<p:inputMask id='componente23' mask="(99)99999-9999"
+												value='#{professorBean.item.pessoa.celular}' size="12">
+											</p:inputMask>
+											<p:spacer width="10" />
+											<h:outputLabel value='Telefone Fixo:' />
+											<p:inputMask id='componente35' mask="(99)9999-9999"
+												value='#{professorBean.item.pessoa.telefoneFixo}' size="12">
+											</p:inputMask>
+
+											<h:outputLabel value='Email:' />
 											<p:inputText id='componente28'
 												value='#{professorBean.item.pessoa.email}' size="80">
 											</p:inputText>
@@ -231,6 +232,7 @@
 										</h:panelGrid>
 									</p:panel>
 								</h:panelGrid>
+
 
 								<f:facet name='footer'>
 									<p:commandButton value="#{i18n['button.cancel']}"

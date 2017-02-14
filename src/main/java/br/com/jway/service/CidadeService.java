@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import br.com.jway.model.Cidade;
+import br.com.jway.model.Uf;
 
 public interface CidadeService extends Serializable{
 	
@@ -21,5 +22,7 @@ public interface CidadeService extends Serializable{
 	public Cidade read(String codigo);
 
 	public List<Cidade> pesquisa(Cidade cidade);
+
+	public List<Cidade> findByUf(Uf uf);
 
 }

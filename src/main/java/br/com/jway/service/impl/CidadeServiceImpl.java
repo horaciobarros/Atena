@@ -8,6 +8,7 @@ import javax.inject.Named;
 import br.com.jway.dao.CidadeDao;
 import br.com.jway.dao.UfDao;
 import br.com.jway.model.Cidade;
+import br.com.jway.model.Uf;
 import br.com.jway.service.CidadeService;
 
 @Named
@@ -61,6 +62,11 @@ public class CidadeServiceImpl implements CidadeService{
 	public List<Cidade> pesquisa(Cidade cidade) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<Cidade> findByUf(Uf uf) {
+		return dao.findByUf(uf);
 	}
 
 }

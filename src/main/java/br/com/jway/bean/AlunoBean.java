@@ -193,7 +193,8 @@ public class AlunoBean extends SpringBeanAutowiringSupport implements Serializab
 		this.ufs = ufs;
 	}
 	
-	public void refleshUf() {
+	public void refreshUf() {
+		cidades = cidadeService.findByUf(item.getPessoa().getUf());
 		
 	}
 

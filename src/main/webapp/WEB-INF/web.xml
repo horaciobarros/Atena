@@ -55,7 +55,7 @@
 	<!-- PRIMEFACES THEME -->
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>bootstrap</param-value>
+		<param-value>south-street</param-value>
 	</context-param>
 	<error-page>
 		<error-code>403</error-code>

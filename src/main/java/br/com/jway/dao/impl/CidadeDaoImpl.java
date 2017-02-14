@@ -60,4 +60,14 @@ public class CidadeDaoImpl implements CidadeDao{
 		return null;
 	}
 
+	@Override
+	public List<Cidade> findByUf(Uf uf) {
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + Cidade.class.getName() + " x ") //
+				.append("WHERE x.uf = '" + uf.getUf() + "'")
+				.append("ORDER BY x.municipio ");
+			return em.createQuery(jpql.toString(), Cidade.class).getResultList();
+	}
+
 }
