@@ -1,6 +1,8 @@
 package br.com.jway.dao.impl; 
 
 import java.util.List;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.jway.dao.TurnoDao;
 import br.com.jway.model.Turno;
+import br.com.jway.service.TenancyService;
 import br.com.jway.dao.*;
 import com.uaihebert.uaicriteria.UaiCriteria;
 
@@ -18,6 +21,9 @@ public class TurnoDaoImpl implements TurnoDao{
 
 	@PersistenceContext 
 	protected EntityManager em;
+	
+	@Inject
+	private TenancyService tenancyService;
 
 	UaiCriteria<Turno> uaiCriteria;
 
@@ -38,6 +44,7 @@ public class TurnoDaoImpl implements TurnoDao{
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(Turno turno) {
+		turno.setTenancy(tenancyService.getTenancyDaSessao());
 		em.persist(turno);
 	}
 	
