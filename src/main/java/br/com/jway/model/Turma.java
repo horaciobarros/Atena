@@ -117,4 +117,77 @@ public class Turma implements Serializable {
 	public void  setTenancy(Long tenancy) { 
 		this.tenancy = tenancy;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		result = prime * result + ((curso == null) ? 0 : curso.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((local == null) ? 0 : local.hashCode());
+		result = prime * result + ((numeroMaximoAlunos == null) ? 0 : numeroMaximoAlunos.hashCode());
+		result = prime * result + ((periodoLetivo == null) ? 0 : periodoLetivo.hashCode());
+		result = prime * result + ((tenancy == null) ? 0 : tenancy.hashCode());
+		result = prime * result + ((turno == null) ? 0 : turno.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Turma other = (Turma) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		if (curso == null) {
+			if (other.curso != null)
+				return false;
+		} else if (!curso.equals(other.curso))
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (local == null) {
+			if (other.local != null)
+				return false;
+		} else if (!local.equals(other.local))
+			return false;
+		if (numeroMaximoAlunos == null) {
+			if (other.numeroMaximoAlunos != null)
+				return false;
+		} else if (!numeroMaximoAlunos.equals(other.numeroMaximoAlunos))
+			return false;
+		if (periodoLetivo == null) {
+			if (other.periodoLetivo != null)
+				return false;
+		} else if (!periodoLetivo.equals(other.periodoLetivo))
+			return false;
+		if (tenancy == null) {
+			if (other.tenancy != null)
+				return false;
+		} else if (!tenancy.equals(other.tenancy))
+			return false;
+		if (turno == null) {
+			if (other.turno != null)
+				return false;
+		} else if (!turno.equals(other.turno))
+			return false;
+		return true;
+	}
+	
+	
 }
