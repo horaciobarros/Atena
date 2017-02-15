@@ -3,6 +3,7 @@ package br.com.jway.dao.impl;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,6 +16,7 @@ import br.com.jway.dao.ServicoDao;
 import br.com.jway.model.Servico;
 import br.com.jway.service.TenancyService;
 
+@Named
 public class ServicoDaoImpl implements ServicoDao{
 	
 	@Inject
