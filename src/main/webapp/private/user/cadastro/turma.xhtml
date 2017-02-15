@@ -112,7 +112,7 @@
 								converter='#{cursoConverter}'>
 								<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 								<f:selectItems value='#{turmaBean.listaCurso}' var='item'
-									itemValue='#{item}' itemLabel='#{item.id}' />
+									itemValue='#{item}' itemLabel='#{item.descricao}' />
 							</p:selectOneMenu>
 
 							<h:outputLabel value='Local:' />
@@ -121,7 +121,7 @@
 								converter='#{localConverter}'>
 								<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 								<f:selectItems value='#{turmaBean.listaLocal}' var='item'
-									itemValue='#{item}' itemLabel='#{item.id}' />
+									itemValue='#{item}' itemLabel='#{item.descricao}' />
 							</p:selectOneMenu>
 
 							<h:outputLabel value='Turno:' />
@@ -130,7 +130,7 @@
 								converter='#{turnoConverter}'>
 								<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 								<f:selectItems value='#{turmaBean.listaTurno}' var='item'
-									itemValue='#{item}' itemLabel='#{item.id}' />
+									itemValue='#{item}' itemLabel='#{item.descricao}' />
 							</p:selectOneMenu>
 						</p:panelGrid>
 

@@ -61,4 +61,47 @@ public class Curso implements Serializable {
 	public void  setTenancy(Long tenancy) { 
 		this.tenancy = tenancy;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((cargaHoraria == null) ? 0 : cargaHoraria.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((tenancy == null) ? 0 : tenancy.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Curso other = (Curso) obj;
+		if (cargaHoraria == null) {
+			if (other.cargaHoraria != null)
+				return false;
+		} else if (!cargaHoraria.equals(other.cargaHoraria))
+			return false;
+		if (descricao == null) {
+			if (other.descricao != null)
+				return false;
+		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (tenancy == null) {
+			if (other.tenancy != null)
+				return false;
+		} else if (!tenancy.equals(other.tenancy))
+			return false;
+		return true;
+	}
+	
+	
 }
