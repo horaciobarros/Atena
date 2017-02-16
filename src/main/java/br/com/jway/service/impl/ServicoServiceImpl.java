@@ -2,8 +2,13 @@ package br.com.jway.service.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import br.com.jway.dao.ServicoDao;
 import br.com.jway.model.Servico;
 import br.com.jway.service.ServicoService;
 
@@ -13,33 +18,41 @@ public class ServicoServiceImpl implements ServicoService{
 	/**
 	 * 
 	 */
+	
+	@Inject
+	private ServicoDao dao;
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void create(Servico servico) {
-		// TODO Auto-generated method stub
+		dao.create(servico);
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(Servico servico) {
-		// TODO Auto-generated method stub
+		dao.delete(servico);
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(Servico servico) {
-		// TODO Auto-generated method stub
+		dao.update(servico);
 		
 	}
 
 	@Override
 	public List<Servico> list() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.list();
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(long id) {
 		// TODO Auto-generated method stub
 		

@@ -43,7 +43,9 @@
 
 									<p:column headerText='Valor' width='30'
 										style='text-align: center;'>
-										<h:outputLabel value='#{itemView.codigo}' />
+										<h:outputLabel value='#{itemView.valor}' >
+										<f:convertNumber minFractionDigits="2" />
+										 </h:outputLabel>
 									</p:column>
 
 									<p:column headerText="#{i18n['operations']}" width='5'
@@ -79,7 +81,7 @@
 								value="#{i18n['operations.create']} #{i18n['servico']}"
 								rendered="#{servicoBean.state eq 'CREATE'}" />
 							<h:outputLabel
-								value="#{i18n['operations.update']} #{i18n['turma']}"
+								value="#{i18n['operations.update']} #{i18n['servico']}"
 								rendered="#{servicoBean.state eq 'UPDATE'}" />
 						</f:facet>
 
@@ -93,9 +95,13 @@
 							</p:inputText>
 
 							<h:outputLabel value='Valor:' />
-							<p:inputNumber id='componente10' value='#{servicoBean.item.valor}' symbol="$" 
-                                required="true" emptyValue="empty" decimalSeparator="," decimalPlaces="." >
-							</p:inputNumber>'
+
+							<p:inputText maxlength="15" size="20" id="valor"
+								required="true" value='#{servicoBean.item.valor}'
+								requiredMessage="Preencha este campo com o valor do serviço">
+								<f:convertNumber pattern="#,##0.00"></f:convertNumber>
+								<f:validator validatorId="MoedaValidator" />
+							</p:inputText>
 
 
 						</p:panelGrid>
