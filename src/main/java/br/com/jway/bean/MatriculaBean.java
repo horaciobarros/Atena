@@ -9,11 +9,11 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.factory.annotation.Autowire;
 import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import br.com.jway.service.*;
 import br.com.jway.model.*;
 import br.com.jway.util.FacesUtils;
+import br.com.jway.util.Util;
 
 @ManagedBean
 @ViewScoped
@@ -26,10 +26,19 @@ public  class MatriculaBean extends SpringBeanAutowiringSupport implements Seria
 	@Inject
 	private MatriculaService service;
 	
+	@Inject
+	private AlunoService alunoService;
+	
+	@Inject
+	private TurmaService turmaService;
+	
+	
 	private String state;
 	private List<Matricula> items;
+	private List<Aluno> listaAluno;
+	private List<Long> listaAnoLetivo;
+	private List<Turma> listaTurma;
 
-	@Inject
 	private Matricula item;
 	private Matricula itemFilter;
 	
@@ -46,6 +55,9 @@ public  class MatriculaBean extends SpringBeanAutowiringSupport implements Seria
 		log.info("Bean @PostConstruct called.");
 		state = "READ";
 		items = service.list();
+		listaAluno = alunoService.list();
+		listaAnoLetivo = Util.listaAnoLetivo();
+		listaTurma = turmaService.list();
 	}
 	
 	public void clearItems() {
@@ -126,6 +138,36 @@ public  class MatriculaBean extends SpringBeanAutowiringSupport implements Seria
 	
 	public void setItemFilter(Matricula itemFilter) {
 		this.itemFilter = itemFilter;
+	}
+
+
+	public List<Aluno> getListaAluno() {
+		return listaAluno;
+	}
+
+
+	public void setListaAluno(List<Aluno> listaAluno) {
+		this.listaAluno = listaAluno;
+	}
+
+
+	public List<Long> getListaAnoLetivo() {
+		return listaAnoLetivo;
+	}
+
+
+	public void setListaAnoLetivo(List<Long> listaAnoLetivo) {
+		this.listaAnoLetivo = listaAnoLetivo;
+	}
+
+
+	public List<Turma> getListaTurma() {
+		return listaTurma;
+	}
+
+
+	public void setListaTurma(List<Turma> listaTurma) {
+		this.listaTurma = listaTurma;
 	}
 
 	
