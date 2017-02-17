@@ -6,13 +6,17 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+
 import br.com.jway.dao.AlunoDao;
 import br.com.jway.model.Aluno;
 import br.com.jway.service.TenancyService;
 import br.com.jway.dao.*;
+
 import com.uaihebert.uaicriteria.UaiCriteria;
+import com.uaihebert.uaicriteria.UaiCriteriaFactory;
 
 @Named 
 public class AlunoDaoImpl implements AlunoDao{
@@ -91,5 +95,18 @@ public class AlunoDaoImpl implements AlunoDao{
 			return em.createQuery(jpql.toString(), Aluno.class).getResultList();
 	}
 	
+	@Override
+	public Aluno findByMatricula(String matricula){
+		final UaiCriteria<Aluno> uaiCriteria = UaiCriteriaFactory.createQueryCriteria(em, Aluno.class);
+		uaiCriteria.andEquals("matricula", matricula);
+		final List<Aluno> uaiCriteriaResult =  uaiCriteria.getResultList();
+		if (uaiCriteriaResult!=null && uaiCriteriaResult.size()>0){
+			return uaiCriteriaResult.get(0);
+		}
+		else{
+			
+		}
+		return null;
+	}
 	
 }

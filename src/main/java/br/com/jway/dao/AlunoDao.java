@@ -2,6 +2,7 @@ package br.com.jway.dao;
 
 import java.io.*;
 import java.util.*;
+
 import br.com.jway.model.Aluno;
 
 public interface AlunoDao  {
@@ -19,5 +20,7 @@ public interface AlunoDao  {
 	void delete(long id);
 
 	public List<Aluno> pesquisa(Aluno aluno);
+
+	Aluno findByMatricula(String matricula);
 
 }

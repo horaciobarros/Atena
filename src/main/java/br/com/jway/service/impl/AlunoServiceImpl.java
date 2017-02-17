@@ -71,4 +71,9 @@ public class AlunoServiceImpl implements AlunoService, Serializable {
 	public List<Aluno> pesquisa(Aluno aluno) {
 		return dao.pesquisa(aluno);
 	}
+	
+	@Override
+	public Aluno findByMatricula(String matricula) {
+		return dao.findByMatricula(matricula);
+	}
 }

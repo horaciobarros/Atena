@@ -19,4 +19,6 @@ public interface AlunoService extends Serializable {
 	public Aluno read(long id);
 
 	public List<Aluno> pesquisa(Aluno aluno);
+	
+	public Aluno findByMatricula(String matricula);
 }
