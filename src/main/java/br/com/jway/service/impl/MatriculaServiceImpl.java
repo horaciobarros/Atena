@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.jway.dao.MatriculaDao;
 import br.com.jway.model.Matricula;
 import br.com.jway.service.MatriculaService;
+import br.com.jway.service.ServicoMatriculaService;
+import br.com.jway.service.ServicoService;
 
 
 @Named
@@ -20,6 +22,9 @@ public class MatriculaServiceImpl implements MatriculaService{
 
 	@Inject 
 	private MatriculaDao dao;
+	
+	@Inject 
+	private ServicoMatriculaService servicoMatriculaService;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
@@ -49,7 +54,13 @@ public class MatriculaServiceImpl implements MatriculaService{
 
 	@Override
 	public List<Matricula> list(){
-		return dao.list();
+		 List<Matricula> lista =  dao.list();
+		 
+		 for (Matricula matricula : lista) {
+			 matricula.setServicoMatriculaList(servicoMatriculaService.findByMatriculaId(matricula.getId()));
+		 }
+		 
+		 return lista;
  	}
 	@Override
 	public List<Matricula> pesquisa(Matricula matricula){

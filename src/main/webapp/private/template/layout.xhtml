@@ -15,10 +15,11 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<title>Atena SGE</title>
 	<h:outputStylesheet library="css" name="index.css" />
-	
+
 </h:head>
 
-<h:body > <!-- style="background-image:url(#{request.contextPath}/resources/images/fundo3.jpg);"> -->
+<h:body>
+	<!-- style="background-image:url(#{request.contextPath}/resources/images/fundo3.jpg);"> -->
 
 	<div id="geral">
 
@@ -28,7 +29,8 @@
 			</ui:insert>
 		</div>
 
-		<div id="content">
+		<div id="content"
+			style="width: 900px; position: absolute; left: 10%; ">
 			<ui:insert name="content">
 				<ui:include src="content.xhtml" />
 			</ui:insert>

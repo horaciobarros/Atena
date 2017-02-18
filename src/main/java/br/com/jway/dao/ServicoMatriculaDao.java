@@ -20,5 +20,7 @@ public interface ServicoMatriculaDao {
 
 	public List<ServicoMatricula> pesquisa(ServicoMatricula servicoMatricula);
 
+	List<ServicoMatricula> findByMatriculaId(Long id);
+
 
 }

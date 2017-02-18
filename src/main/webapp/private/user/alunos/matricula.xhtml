@@ -162,14 +162,55 @@
 
 										<h:outputLabel value='Situação:' />
 										<h:selectOneMenu required="true"
-											value="#{matriculaBean.item.situacao}" id="situacao"
-											>
+											value="#{matriculaBean.item.situacao}" id="situacao">
 											<f:selectItem itemValue="A" itemLabel="Ativa" />
 											<f:selectItem itemValue="S" itemLabel="Suspensa" />
 											<f:selectItem itemValue="C" itemLabel="Cancelada" />
 										</h:selectOneMenu>
 
 									</h:panelGrid>
+
+									<p:panel id='editPanelServicos'>
+									<f:facet name='header'>
+										<p:outputLabel value="Serviços contratados" />
+									</f:facet>
+										<p:dataTable id='mainDataTableServico'
+											value='#{matriculaBean.item.servicoMatriculaList}'
+											var='itemView'>
+
+											<p:column headerText='Nome' width='40'
+												style='text-align: center;'>
+												<h:outputLabel value='#{itemView.servico.descricao}' />
+											</p:column>
+
+											<p:column headerText='Valor' width='14'
+												style='text-align: center;'>
+												<h:outputLabel value='#{itemView.servico.valor}' />
+											</p:column>
+
+
+											<p:column headerText="#{i18n['operations']}" width='15'
+												style='text-align: center;'>
+												<p:commandButton id='buttonOperationEdit'
+													icon='ui-icon-pencil' process='@this' update='@form'
+													resetValues='true' immediate='true'>
+													<f:setPropertyActionListener target='#{matriculaBean.item}'
+														value='#{itemView}' />
+													<f:setPropertyActionListener
+														target='#{matriculaBean.state}' value='UPDATE' />
+												</p:commandButton>
+												<p:commandButton id='buttonOperationRemove'
+													icon='ui-icon-trash' process='@this' update='@form'
+													immediate='true'>
+													<f:setPropertyActionListener target='#{matriculaBean.item}'
+														value='#{itemView}' />
+													<f:setPropertyActionListener
+														target='#{matriculaBean.state}' value='DELETE' />
+												</p:commandButton>
+											</p:column>
+										</p:dataTable>
+									</p:panel>
+
 								</p:panel>
 
 								<f:facet name='footer'>

@@ -97,7 +97,7 @@ public  class MatriculaBean extends SpringBeanAutowiringSupport implements Seria
 	}
 	
 	public void pesquisa(){
-		items = service.pesquisa(item);
+		items = service.pesquisa(itemFilter);
 	}
 	
 	public void limpaPesquisa(){

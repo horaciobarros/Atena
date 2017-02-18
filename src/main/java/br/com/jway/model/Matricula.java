@@ -3,6 +3,7 @@ package br.com.jway.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="matricula")
@@ -52,6 +54,9 @@ public class Matricula implements Serializable{
 	
 	@Column
 	private Long tenancy;
+	
+	@Transient
+	private List<ServicoMatricula> servicoMatriculaList;
 	
 
 	public Long getId() {
@@ -118,6 +123,23 @@ public class Matricula implements Serializable{
 		this.turma = turma;
 	}
 
+
+	public Long getTenancy() {
+		return tenancy;
+	}
+
+	public void setTenancy(Long tenancy) {
+		this.tenancy = tenancy;
+	}
+
+	public List<ServicoMatricula> getServicoMatriculaList() {
+		return servicoMatriculaList;
+	}
+
+	public void setServicoMatriculaList(List<ServicoMatricula> servicoMatriculaList) {
+		this.servicoMatriculaList = servicoMatriculaList;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -127,8 +149,10 @@ public class Matricula implements Serializable{
 		result = prime * result + ((dataInicio == null) ? 0 : dataInicio.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((percDesconto == null) ? 0 : percDesconto.hashCode());
+		result = prime * result + ((servicoMatriculaList == null) ? 0 : servicoMatriculaList.hashCode());
 		result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
 		result = prime * result + ((temDesconto == null) ? 0 : temDesconto.hashCode());
+		result = prime * result + ((tenancy == null) ? 0 : tenancy.hashCode());
 		result = prime * result + ((turma == null) ? 0 : turma.hashCode());
 		return result;
 	}
@@ -167,6 +191,11 @@ public class Matricula implements Serializable{
 				return false;
 		} else if (!percDesconto.equals(other.percDesconto))
 			return false;
+		if (servicoMatriculaList == null) {
+			if (other.servicoMatriculaList != null)
+				return false;
+		} else if (!servicoMatriculaList.equals(other.servicoMatriculaList))
+			return false;
 		if (situacao == null) {
 			if (other.situacao != null)
 				return false;
@@ -177,20 +206,17 @@ public class Matricula implements Serializable{
 				return false;
 		} else if (!temDesconto.equals(other.temDesconto))
 			return false;
+		if (tenancy == null) {
+			if (other.tenancy != null)
+				return false;
+		} else if (!tenancy.equals(other.tenancy))
+			return false;
 		if (turma == null) {
 			if (other.turma != null)
 				return false;
 		} else if (!turma.equals(other.turma))
 			return false;
 		return true;
-	}
-
-	public Long getTenancy() {
-		return tenancy;
-	}
-
-	public void setTenancy(Long tenancy) {
-		this.tenancy = tenancy;
 	}
 	
 	

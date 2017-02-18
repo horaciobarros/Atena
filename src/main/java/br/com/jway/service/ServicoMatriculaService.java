@@ -22,4 +22,6 @@ public interface ServicoMatriculaService extends Serializable{
 
 	public List<ServicoMatricula> pesquisa(ServicoMatricula servicoMatricula);
 
+	public List<ServicoMatricula> findByMatriculaId(Long id);
+
 }

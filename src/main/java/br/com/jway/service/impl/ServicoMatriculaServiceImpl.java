@@ -2,15 +2,23 @@ package br.com.jway.service.impl;
 
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import br.com.jway.dao.ServicoMatriculaDao;
 import br.com.jway.model.ServicoMatricula;
 import br.com.jway.service.ServicoMatriculaService;
 
+@Named
 public class ServicoMatriculaServiceImpl implements ServicoMatriculaService {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private ServicoMatriculaDao dao;
 
 	@Override
 	public void create(ServicoMatricula servicoMatricula) {
@@ -52,6 +60,11 @@ public class ServicoMatriculaServiceImpl implements ServicoMatriculaService {
 	public List<ServicoMatricula> pesquisa(ServicoMatricula servicoMatricula) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<ServicoMatricula> findByMatriculaId(Long id) {
+		return dao.findByMatriculaId(id);
 	}
 
 }

@@ -71,4 +71,15 @@ public class ServicoMatriculaDaoImpl implements ServicoMatriculaDao{
 	@Override
 	public List<ServicoMatricula> pesquisa(ServicoMatricula servicoMatricula){
 		return null;	}
+
+	@Override
+	public List<ServicoMatricula> findByMatriculaId(Long id) {
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + ServicoMatricula.class.getName() + " x ") //
+				.append("INNER JOIN x.matricula matricula ")
+				.append("INNER JOIN x.servico servico ")
+				.append("WHERE matricula.id = " + id);
+			return em.createQuery(jpql.toString(), ServicoMatricula.class).getResultList();
+	}
 }
