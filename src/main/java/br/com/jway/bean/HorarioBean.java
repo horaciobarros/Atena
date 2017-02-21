@@ -26,10 +26,15 @@ public  class HorarioBean extends SpringBeanAutowiringSupport implements Seriali
 	@Inject
 	private HorarioService service;
 	
+	@Inject
+	private TurmaService turmaService;
+	
 	private String state;
 	private List<Horario> items;
 	private Horario item;
 	private Horario itemFilter;
+	
+	private List<Turma> listaTurma;
 	
 	
 	public HorarioBean() {
@@ -44,6 +49,7 @@ public  class HorarioBean extends SpringBeanAutowiringSupport implements Seriali
 		log.info("Bean @PostConstruct called.");
 		state = "READ";
 		items = service.list();
+		listaTurma = turmaService.list();
 	}
 	
 	public void clearItems() {
@@ -126,5 +132,16 @@ public  class HorarioBean extends SpringBeanAutowiringSupport implements Seriali
 		this.itemFilter = itemFilter;
 	}
 
+
+	public List<Turma> getListaTurma() {
+		return listaTurma;
+	}
+
+
+	public void setListaTurma(List<Turma> listaTurma) {
+		this.listaTurma = listaTurma;
+	}
+
+	
 
 }
