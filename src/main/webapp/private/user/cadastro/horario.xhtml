@@ -24,11 +24,10 @@
 							<p:panel id='searchPanel' header="#{i18n['operations.search']}">
 
 								<h:outputLabel value='Turma:' />
-								<h:selectOneMenu required="true"
-									value="#{horarioBean.itemFilter.turma}" id="turma"
-									converter='#{turmaConverter}'>
+								<h:selectOneMenu value="#{horarioBean.itemFilter.turma}"
+									id="turma" converter='#{turmaConverter}'>
 									<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
-									
+
 									<f:selectItems value="#{horarioBean.listaTurma}" var="turma"
 										itemLabel="#{turma.descricao}" itemValue="#{turma}" />
 								</h:selectOneMenu>
@@ -52,39 +51,52 @@
 								<p:dataTable id='mainDataTable' value='#{horarioBean.items}'
 									var='itemView'>
 
-									<p:column headerText='Dia' width='10'
-										style='text-align: center;'>
-										<h:outputText value='#{itemView.diaSemana}' />
-									</p:column>
-									
 									<p:column headerText='Turma' width='30'
 										style='text-align: center;'>
 										<h:outputText value='#{itemView.turma.descricao}' />
 									</p:column>
 
-									<p:column headerText='1º horário' width='40'
+									<p:column headerText='Dia' width='10'
 										style='text-align: center;'>
-										<h:outputText value='#{itemView.disciplinaPrimeiroHorario.getDescricao()}' />
+										<h:selectOneMenu disabled="true"
+													value="#{itemView.diaSemana}" id="diaSemanaAux">
+													<f:selectItem itemValue="2" itemLabel="Seg" />
+													<f:selectItem itemValue="3" itemLabel="Ter" />
+													<f:selectItem itemValue="4" itemLabel="Qua" />
+													<f:selectItem itemValue="5" itemLabel="Qui" />
+													<f:selectItem itemValue="6" itemLabel="Sex" />
+													<f:selectItem itemValue="7" itemLabel="Sab" />
+												</h:selectOneMenu>
 									</p:column>
-									
-									<p:column headerText='2º horário' width='40'
-										style='text-align: center;'>
-										<h:outputText value='#{itemView.disciplinaSegundoHorario.getDescricao()}' />
-									</p:column>
-									
-									<p:column headerText='3º horário' width='40'
-										style='text-align: center;'>
-										<h:outputText value='#{itemView.disciplinaTerceiroHorario.getDescricao()}' />
-									</p:column>
-									
-									<p:column headerText='4º horário' width='40'
-										style='text-align: center;'>
-										<h:outputText value='#{itemView.disciplinaQuartoHorario.getDescricao()}' />
-									</p:column>
-									
 
 
-									<p:column headerText="#{i18n['operations']}" width='5'
+
+									<p:column headerText='1º horário' width='30'
+										style='text-align: center;'>
+										<h:outputText
+											value='#{itemView.disciplinaPrimeiroHorario.getDescricao()}' />
+									</p:column>
+
+									<p:column headerText='2º horário' width='30'
+										style='text-align: center;'>
+										<h:outputText
+											value='#{itemView.disciplinaSegundoHorario.getDescricao()}' />
+									</p:column>
+
+									<p:column headerText='3º horário' width='30'
+										style='text-align: center;'>
+										<h:outputText
+											value='#{itemView.disciplinaTerceiroHorario.getDescricao()}' />
+									</p:column>
+
+									<p:column headerText='4º horário' width='30'
+										style='text-align: center;'>
+										<h:outputText
+											value='#{itemView.disciplinaQuartoHorario.getDescricao()}' />
+									</p:column>
+
+
+									<p:column headerText="#{i18n['operations']}" width='20'
 										style='text-align: center;'>
 										<p:commandButton id='buttonOperationEdit'
 											icon='ui-icon-pencil' process='@this' update='@form'
@@ -124,21 +136,82 @@
 								</f:facet>
 								<div class='ui-grid-form ui-grid ui-grid-responsive'>
 									<div class='ui-grid-row'>
-											<h:inputHidden id='componente5' value='#{horarioBean.item.id}'/>
-											
-											<h:outputText value='Turma:' />
-											<p:inputText id='turma'
-												value='#{horarioBean.item.turma}'>
-											</p:inputText>
-											
-											<h:outputText value='Fim:' />
-											<p:inputText id='componente7' value='#{horarioBean.item.fim}'>
-											</p:inputText>
-											
-											<h:outputText value='Inicio:' />
-											<p:inputText id='componente8'
-												value='#{horarioBean.item.inicio}'>
-											</p:inputText>
+										<h:inputHidden id='componente5' value='#{horarioBean.item.id}' />
+
+										<h:panelGrid>
+
+											<h:panelGrid columns="2">
+												<h:outputLabel value='Turma:' />
+												<h:selectOneMenu value="#{horarioBean.item.turma}"
+													id="turma2" converter='#{turmaConverter}' required="true">
+													<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
+
+													<f:selectItems value="#{horarioBean.listaTurma}"
+														var="turma" itemLabel="#{turma.descricao}"
+														itemValue="#{turma}" />
+												</h:selectOneMenu>
+
+												<h:outputLabel value='Dia:' />
+												<h:selectOneMenu required="true"
+													value="#{horarioBean.item.diaSemana}" id="diaSemana">
+													<f:selectItem itemValue="#{null}" itemLabel="Escolha..." />
+													<f:selectItem itemValue="2" itemLabel="Seg" />
+													<f:selectItem itemValue="3" itemLabel="Ter" />
+													<f:selectItem itemValue="4" itemLabel="Qua" />
+													<f:selectItem itemValue="5" itemLabel="Qui" />
+													<f:selectItem itemValue="6" itemLabel="Sex" />
+													<f:selectItem itemValue="7" itemLabel="Sab" />
+												</h:selectOneMenu>
+											</h:panelGrid>
+											<h:panelGrid columns="2">
+
+												<h:outputLabel value='1º Horário:' />
+												<h:selectOneMenu required="true"
+													value="#{horarioBean.item.disciplinaPrimeiroHorario}"
+													id="disciplina1" converter='#{disciplinaConverter}'>
+													<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
+
+													<f:selectItems value="#{horarioBean.listaDisciplina}"
+														var="disciplina" itemLabel="#{disciplina.descricao}"
+														itemValue="#{disciplina}" />
+												</h:selectOneMenu>
+
+												<h:outputLabel value='2º Horário:' />
+												<h:selectOneMenu required="true"
+													value="#{horarioBean.item.disciplinaSegundoHorario}"
+													id="disciplina2" converter='#{disciplinaConverter}'>
+													<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
+
+													<f:selectItems value="#{horarioBean.listaDisciplina}"
+														var="disciplina" itemLabel="#{disciplina.descricao}"
+														itemValue="#{disciplina}" />
+												</h:selectOneMenu>
+
+												<h:outputLabel value='3º Horário:' />
+												<h:selectOneMenu required="true"
+													value="#{horarioBean.item.disciplinaTerceiroHorario}"
+													id="disciplina3" converter='#{disciplinaConverter}'>
+													<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
+
+													<f:selectItems value="#{horarioBean.listaDisciplina}"
+														var="disciplina" itemLabel="#{disciplina.descricao}"
+														itemValue="#{disciplina}" />
+												</h:selectOneMenu>
+
+												<h:outputLabel value='4º Horário:' />
+												<h:selectOneMenu required="true"
+													value="#{horarioBean.item.disciplinaQuartoHorario}"
+													id="disciplina4" converter='#{disciplinaConverter}'>
+													<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
+
+													<f:selectItems value="#{horarioBean.listaDisciplina}"
+														var="disciplina" itemLabel="#{disciplina.descricao}"
+														itemValue="#{disciplina}" />
+												</h:selectOneMenu>
+											</h:panelGrid>
+										</h:panelGrid>
+
+
 									</div>
 								</div>
 								<f:facet name='footer'>

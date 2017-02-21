@@ -1,6 +1,8 @@
 package br.com.jway.dao.impl; 
 
 import java.util.List;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,6 +10,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import br.com.jway.dao.HorarioDao;
 import br.com.jway.model.Horario;
+import br.com.jway.service.TenancyService;
 import br.com.jway.dao.*;
 import com.uaihebert.uaicriteria.UaiCriteria;
 
@@ -18,6 +21,9 @@ public class HorarioDaoImpl implements HorarioDao{
 
 	@PersistenceContext 
 	protected EntityManager em;
+	
+	@Inject
+	TenancyService tenancyService;
 
 	UaiCriteria<Horario> uaiCriteria;
 
@@ -38,6 +44,7 @@ public class HorarioDaoImpl implements HorarioDao{
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(Horario horario) {
+		horario.setTenancy(tenancyService.getTenancyDaSessao());
 		em.persist(horario);
 	}
 	
