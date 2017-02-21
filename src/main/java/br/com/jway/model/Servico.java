@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name="servico")
@@ -35,6 +36,7 @@ public class Servico implements Serializable{
 	
 	@Column(name="tenancy")
 	private Long tenancy;
+	
 
 	public Long getId() {
 		return id;
@@ -129,6 +131,10 @@ public class Servico implements Serializable{
 		return true;
 	}
 	
+	public String getDescricaoValor() {
+		return (descricao + " - " + valor);
+	}
+
 	
 	
 }

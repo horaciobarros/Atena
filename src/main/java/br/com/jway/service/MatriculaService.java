@@ -1,6 +1,7 @@
 package br.com.jway.service;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import br.com.jway.model.Matricula;
@@ -21,4 +22,6 @@ public interface MatriculaService  extends Serializable {
 	public Matricula read(long id);
 
 	public List<Matricula> pesquisa(Matricula matricula);
+	
+	public BigDecimal getValorLiquidoMatricula(Matricula matricula);
 }

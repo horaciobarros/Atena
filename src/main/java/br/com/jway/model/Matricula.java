@@ -58,6 +58,9 @@ public class Matricula implements Serializable{
 	@Transient
 	private List<ServicoMatricula> servicoMatriculaList;
 	
+	@Transient
+	private List<ServicoMatricula> servicoMatriculaListToRemove;
+	
 
 	public Long getId() {
 		return id;
@@ -217,6 +220,14 @@ public class Matricula implements Serializable{
 		} else if (!turma.equals(other.turma))
 			return false;
 		return true;
+	}
+
+	public List<ServicoMatricula> getServicoMatriculaListToRemove() {
+		return servicoMatriculaListToRemove;
+	}
+
+	public void setServicoMatriculaListToRemove(List<ServicoMatricula> servicoMatriculaListToRemove) {
+		this.servicoMatriculaListToRemove = servicoMatriculaListToRemove;
 	}
 	
 	

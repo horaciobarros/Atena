@@ -1,6 +1,7 @@
 package br.com.jway.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,31 +11,38 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name="servico_matricula")
-public class ServicoMatricula implements Serializable{
+@Table(name = "servico_matricula")
+public class ServicoMatricula implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Long id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="servico")
+	@JoinColumn(name = "servico")
 	private Servico servico;
-	
+
 	@ManyToOne
-	@JoinColumn(name="matricula")
+	@JoinColumn(name = "matricula")
 	private Matricula matricula;
-	
+
 	@Column
 	private Long tenancy;
+
+	@Column(name = "perc_desconto")
+	private Integer percDesconto;
+
+	@Transient
+	private BigDecimal valorLiquido;
 
 	public Long getId() {
 		return id;
@@ -72,12 +80,21 @@ public class ServicoMatricula implements Serializable{
 		return serialVersionUID;
 	}
 
+	public Integer getPercDesconto() {
+		return percDesconto;
+	}
+
+	public void setPercDesconto(Integer percDesconto) {
+		this.percDesconto = percDesconto;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((matricula == null) ? 0 : matricula.hashCode());
+		result = prime * result + ((percDesconto == null) ? 0 : percDesconto.hashCode());
 		result = prime * result + ((servico == null) ? 0 : servico.hashCode());
 		result = prime * result + ((tenancy == null) ? 0 : tenancy.hashCode());
 		return result;
@@ -102,6 +119,11 @@ public class ServicoMatricula implements Serializable{
 				return false;
 		} else if (!matricula.equals(other.matricula))
 			return false;
+		if (percDesconto == null) {
+			if (other.percDesconto != null)
+				return false;
+		} else if (!percDesconto.equals(other.percDesconto))
+			return false;
 		if (servico == null) {
 			if (other.servico != null)
 				return false;
@@ -114,8 +136,20 @@ public class ServicoMatricula implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
+
+	public BigDecimal getValorLiquido() {
+		valorLiquido = new BigDecimal(0);
+		if (getPercDesconto() != null) {
+			valorLiquido = 	servico.getValor().subtract(servico.getValor().multiply(BigDecimal.valueOf(getPercDesconto()).divide(new BigDecimal(100))));
+		} else {
+			valorLiquido = valorLiquido.add(servico.getValor());
+
+		}
+		return valorLiquido;
+	}
+
+	public void setValorLiquido(BigDecimal valorLiquidoMatricula) {
+		this.valorLiquido = valorLiquidoMatricula;
+	}
 
 }

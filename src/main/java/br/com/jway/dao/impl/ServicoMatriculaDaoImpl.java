@@ -59,7 +59,8 @@ public class ServicoMatriculaDaoImpl implements ServicoMatriculaDao{
 	@Override
 	@Transactional(propagation = Propagation.MANDATORY)
 	public void delete(ServicoMatricula servicoMatricula) {
-		em.remove(servicoMatricula);
+		ServicoMatricula sm = em.merge(servicoMatricula);
+		em.remove(sm);
 	}
 	
 	@Override

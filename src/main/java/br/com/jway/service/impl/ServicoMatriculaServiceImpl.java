@@ -22,19 +22,19 @@ public class ServicoMatriculaServiceImpl implements ServicoMatriculaService {
 
 	@Override
 	public void create(ServicoMatricula servicoMatricula) {
-		// TODO Auto-generated method stub
+		dao.create(servicoMatricula);
 		
 	}
 
 	@Override
 	public void delete(ServicoMatricula servicoMatricula) {
-		// TODO Auto-generated method stub
+		dao.delete(servicoMatricula);
 		
 	}
 
 	@Override
 	public void update(ServicoMatricula servicoMatricula) {
-		// TODO Auto-generated method stub
+		dao.update(servicoMatricula);
 		
 	}
 

@@ -105,6 +105,10 @@
 		<filter-name>PrimeFaces FileUpload Filter</filter-name>
 		<servlet-name>Faces Servlet</servlet-name>
 	</filter-mapping>
+	
+<session-config>
+        <session-timeout>60</session-timeout>
+</session-config>
 
 
 </web-app>

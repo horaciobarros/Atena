@@ -60,8 +60,8 @@ public class ServicoServiceImpl implements ServicoService{
 
 	@Override
 	public Servico read(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.read(id);
 	}
 
 	@Override
