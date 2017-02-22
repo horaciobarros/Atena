@@ -89,12 +89,32 @@
 
 								<p:panelGrid columns="2">
 									<h:outputLabel value='Codigo:' />
-									<p:inputText id='componente5' size="5"
+									<p:inputText id='codigo' size="5" required="true"
 										value='#{turnoBean.item.codigo}'>
 									</p:inputText>
 									<h:outputLabel value='Descricao:' />
-									<p:inputText id='componente6' size="60"
+									<p:inputText id='Descricao' size="60" required="true"
 										value='#{turnoBean.item.descricao}'>
+									</p:inputText>
+									<h:outputLabel value='Hora de início:' />
+									<p:inputText id='HorarioInicio' size="5" required="true"
+										value='#{turnoBean.item.horaInicioTurno}'>
+									</p:inputText>
+									<h:outputLabel value='Último horário antes do intervalo:' />
+									<p:inputText id='horario' size="5" required="true"
+										value='#{turnoBean.item.horarioAntecessorAoIntervalo}'>
+									</p:inputText>
+									<h:outputLabel value='Duração intervalo (minutos):' />
+									<p:inputText id='duracao' size="5" required="true"
+										value='#{turnoBean.item.duracaoIntervalo}'>
+									</p:inputText>
+									<h:outputLabel value='Duração de cada aula (minutos):' />
+									<p:inputText id='duracaoaula' size="5" required="true"
+										value='#{turnoBean.item.duracaoAulaMinutos}'>
+									</p:inputText>
+									<h:outputLabel value='Total de aulas no turno:' />
+									<p:inputText id='total' size="5" required="true"
+										value='#{turnoBean.item.totalHorarios}'>
 									</p:inputText>
 								</p:panelGrid>
 

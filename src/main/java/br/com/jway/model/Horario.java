@@ -50,6 +50,9 @@ public class Horario implements Serializable {
 	@JoinColumn(name="disciplina_quarto_horario")
 	private Disciplina disciplinaQuartoHorario;
 	
+	@ManyToOne
+	@JoinColumn(name="disciplina_quinto_horario")
+	private Disciplina disciplinaQuintoHorario;
 	
 	@Column(name="codigo")
 	private String codigo;
@@ -144,6 +147,7 @@ public class Horario implements Serializable {
 		result = prime * result + ((diaSemana == null) ? 0 : diaSemana.hashCode());
 		result = prime * result + ((disciplinaPrimeiroHorario == null) ? 0 : disciplinaPrimeiroHorario.hashCode());
 		result = prime * result + ((disciplinaQuartoHorario == null) ? 0 : disciplinaQuartoHorario.hashCode());
+		result = prime * result + ((disciplinaQuintoHorario == null) ? 0 : disciplinaQuintoHorario.hashCode());
 		result = prime * result + ((disciplinaSegundoHorario == null) ? 0 : disciplinaSegundoHorario.hashCode());
 		result = prime * result + ((disciplinaTerceiroHorario == null) ? 0 : disciplinaTerceiroHorario.hashCode());
 		result = prime * result + ((fim == null) ? 0 : fim.hashCode());
@@ -182,6 +186,11 @@ public class Horario implements Serializable {
 				return false;
 		} else if (!disciplinaQuartoHorario.equals(other.disciplinaQuartoHorario))
 			return false;
+		if (disciplinaQuintoHorario == null) {
+			if (other.disciplinaQuintoHorario != null)
+				return false;
+		} else if (!disciplinaQuintoHorario.equals(other.disciplinaQuintoHorario))
+			return false;
 		if (disciplinaSegundoHorario == null) {
 			if (other.disciplinaSegundoHorario != null)
 				return false;
@@ -218,6 +227,12 @@ public class Horario implements Serializable {
 		} else if (!turma.equals(other.turma))
 			return false;
 		return true;
+	}
+	public Disciplina getDisciplinaQuintoHorario() {
+		return disciplinaQuintoHorario;
+	}
+	public void setDisciplinaQuintoHorario(Disciplina disciplinaQuintoHorario) {
+		this.disciplinaQuintoHorario = disciplinaQuintoHorario;
 	}
 	
 	

@@ -94,6 +94,12 @@
 										<h:outputText
 											value='#{itemView.disciplinaQuartoHorario.getDescricao()}' />
 									</p:column>
+									
+									<p:column headerText='5º horário' width='30'
+										style='text-align: center;'>
+										<h:outputText
+											value='#{itemView.disciplinaQuintoHorario.getDescricao()}' />
+									</p:column>
 
 
 									<p:column headerText="#{i18n['operations']}" width='20'
@@ -163,7 +169,7 @@
 													<f:selectItem itemValue="7" itemLabel="Sab" />
 												</h:selectOneMenu>
 											</h:panelGrid>
-											<h:panelGrid columns="11">
+											<h:panelGrid columns="14">
 
 												<h:outputLabel value='1º Horário:' />
 												<h:selectOneMenu required="true"
@@ -211,6 +217,20 @@
 														var="disciplina" itemLabel="#{disciplina.descricao}"
 														itemValue="#{disciplina}" />
 												</h:selectOneMenu>
+												
+												<p:spacer width="5"/>
+
+												<h:outputLabel value='5º Horário:' />
+												<h:selectOneMenu required="true"
+													value="#{horarioBean.item.disciplinaQuintoHorario}"
+													id="disciplina5" converter='#{disciplinaConverter}'>
+													<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
+
+													<f:selectItems value="#{horarioBean.listaDisciplina}"
+														var="disciplina" itemLabel="#{disciplina.descricao}"
+														itemValue="#{disciplina}" />
+												</h:selectOneMenu>
+												
 											</h:panelGrid>
 										</h:panelGrid>
 
