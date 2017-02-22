@@ -138,28 +138,28 @@
 							</p:inputText>
 
 							<h:outputLabel value='Uf:' />
-							<h:selectOneMenu required="true"
-								value="#{escolaBean.item.uf}" id="uf"
-								converter='#{ufConverter}'>
-								<f:selectItem itemLabel='Escolha' itemValue='#{null}'/>
+							<h:selectOneMenu required="true" value="#{escolaBean.item.uf}"
+								id="uf" converter='#{ufConverter}'>
+								<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 								<f:selectItems value="#{escolaBean.ufs}" var="uf"
 									itemLabel="#{uf.descricao}" itemValue="#{uf}" />
 								<p:ajax listener="#{escolaBean.refreshUf}" event="change"
 									update="cidade" process="uf" />
 							</h:selectOneMenu>
-							
+
 							<h:outputLabel value='Cidade:' />
 							<h:selectOneMenu required="true"
 								value="#{escolaBean.item.cidade}" id="cidade"
 								converter='#{cidadeConverter}'>
-								<f:selectItem itemLabel='Escolha' itemValue='#{null}'/>
+								<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 								<f:selectItems value="#{escolaBean.cidades}" var="cidade"
 									itemLabel="#{cidade.municipio}" itemValue="#{cidade}" />
 							</h:selectOneMenu>
 
 
 							<h:outputLabel value='Celular:' />
-							<p:inputMask id='componente24' value='#{escolaBean.item.celular}' mask="(99)99999-9999" >
+							<p:inputMask id='componente24' value='#{escolaBean.item.celular}'
+								mask="(99)99999-9999">
 							</p:inputMask>
 
 							<h:outputLabel value='Celular1:' />
@@ -170,14 +170,15 @@
 
 
 							<h:outputLabel value='Email:' />
-							<p:inputText id='componente30' value='#{escolaBean.item.email}' size="60">
+							<p:inputText id='componente30' value='#{escolaBean.item.email}'
+								size="60">
 							</p:inputText>
 
 
 
 							<h:outputLabel value='Site:' />
-							<p:inputText id='componente36' value='#{escolaBean.item.site}' size="60"
-							>
+							<p:inputText id='componente36' value='#{escolaBean.item.site}'
+								size="60">
 							</p:inputText>
 
 							<h:outputLabel value='Telefone Fixo:' />
@@ -189,11 +190,20 @@
 							<p:inputMask id='componente39' mask="(99)9999-9999"
 								value='#{escolaBean.item.telefoneFixo1}'>
 							</p:inputMask>
-							
+
 							<h:outputLabel value='Inscricao Municipal:' />
 							<p:inputText id='componente33'
 								value='#{escolaBean.item.inscricaoMunicipal}'>
 							</p:inputText>
+
+							<h:outputLabel value='Ciclo:' />
+							<h:selectOneMenu required="true"
+								value="#{escolaBean.item.ciclo}" id="ciclo">
+								<f:selectItem itemValue="#{null}" itemLabel="Escolha..." />
+								<f:selectItem itemValue="B" itemLabel="Bimestral" />
+								<f:selectItem itemValue="T" itemLabel="Trimestral" />
+								<f:selectItem itemValue="S" itemLabel="Semestral" />
+							</h:selectOneMenu>
 
 
 
