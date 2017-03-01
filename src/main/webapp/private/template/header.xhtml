@@ -33,8 +33,8 @@
 
 					<b:navLink value="#{i18n['horario']}"
 						href="/atena/private/user/cadastro/horario.xhtml"></b:navLink>
-						
-						<b:navLink value="#{i18n['servico']}"
+
+					<b:navLink value="#{i18n['servico']}"
 						href="/atena/private/user/cadastro/servico.xhtml"></b:navLink>
 				</b:dropMenu>
 				<b:dropMenu value="Alunos">
@@ -46,17 +46,24 @@
 				<b:dropMenu value="Professores">
 					<b:navLink value="#{i18n['cadastroProfessor']}"
 						href="/atena/private/user/professores/professor.xhtml"></b:navLink>
-						<b:navLink value="#{i18n['alocacao']}"
+					<b:navLink value="#{i18n['alocacao']}"
 						href="/atena/private/user/professores/turmaDisciplina.xhtml"></b:navLink>
 				</b:dropMenu>
-				<b:navLink value="Financeiro" href="#"></b:navLink>
+				<b:dropMenu value="Financeiro">
+					<b:navLink value="#{i18n['boleto']}"
+						href="/atena/private/user/financeiro/lancamentoCobranca.xhtml"></b:navLink>
+					<b:navLink value="#{i18n['pagamento']}"
+						href="/atena/private/user/financeiro/pagamento.xhtml"></b:navLink>
+						<b:navLink value="#{i18n['contasReceber']}"
+						href="/atena/private/user/financeiro/contasReceber.xhtml"></b:navLink>
+				</b:dropMenu>
 
 				<!-- Alinhados a direita) -->
 				<b:navbarLinks pull="right">
 					<b:navLink value="    " href="#"></b:navLink>
 				</b:navbarLinks>
 				<b:navbarLinks pull="right" styleClass="hidden-xs">
-					
+
 					<b:navLink value="Sair" href="/atena/public/login.xhtml"></b:navLink>
 				</b:navbarLinks>
 			</b:navbarLinks>

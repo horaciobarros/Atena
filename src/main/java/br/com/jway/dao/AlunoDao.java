@@ -1,6 +1,5 @@
 package br.com.jway.dao; 
 
-import java.io.*;
 import java.util.*;
 
 import br.com.jway.model.Aluno;
