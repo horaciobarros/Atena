@@ -26,6 +26,7 @@ public class TurmaDisciplinaAlunoDaoImpl implements TurmaDisciplinaAlunoDao{
 		StringBuilder jpql = new StringBuilder()
 			.append("SELECT x ") 
 			.append("FROM " + TurmaDisciplinaAluno.class.getName() + " x ") //
+			.append("INNER JOIN x.disciplina d ")
 			.append("ORDER BY x.id ASC ");
 		return em.createQuery(jpql.toString(), TurmaDisciplinaAluno.class).getResultList();
 	}

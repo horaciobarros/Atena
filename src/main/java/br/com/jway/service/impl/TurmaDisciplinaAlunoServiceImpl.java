@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jway.model.TurmaDisciplinaAluno;
 import br.com.jway.dao.TurmaDisciplinaAlunoDao;
+import br.com.jway.service.TenancyService;
 import br.com.jway.service.TurmaDisciplinaAlunoService;
 
 @Named
@@ -19,6 +20,9 @@ public class TurmaDisciplinaAlunoServiceImpl implements TurmaDisciplinaAlunoServ
 
 	@Inject 
 	private TurmaDisciplinaAlunoDao dao;
+	
+	@Inject
+	private TenancyService tenancyService;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)

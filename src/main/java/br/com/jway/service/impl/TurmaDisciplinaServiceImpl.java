@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import br.com.jway.model.TurmaDisciplina;
 import br.com.jway.dao.TurmaDisciplinaDao;
+import br.com.jway.service.TenancyService;
 import br.com.jway.service.TurmaDisciplinaService;
 
 @Named
@@ -19,11 +20,15 @@ public class TurmaDisciplinaServiceImpl implements TurmaDisciplinaService, Seria
 
 	@Inject 
 	private TurmaDisciplinaDao dao;
+	
+	@Inject
+	private TenancyService tenancyService;
 
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void create(TurmaDisciplina turmadisciplina){
-		dao.create(turmadisciplina);
+	public void create(TurmaDisciplina turmaDisciplina){
+		turmaDisciplina.setTenancy(tenancyService.getTenancyDaSessao());
+		dao.create(turmaDisciplina);
 	}
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
