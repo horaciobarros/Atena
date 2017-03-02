@@ -115,6 +115,9 @@ public class LancamentoCobrancaBean extends SpringBeanAutowiringSupport implemen
 	}
 
 	public LancamentoCobranca getItem() {
+		if (item == null) {
+			item = new LancamentoCobranca();
+		}
 		return item;
 	}
 

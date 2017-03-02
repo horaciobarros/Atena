@@ -25,16 +25,16 @@
 								<h:panelGrid columns="2">
 
 
-									<h:outputLabel value='Aluno:' />
+									<h:outputLabel value='Aluno matriculado:' />
 									<p:selectOneMenu id='aluno'
-										value='#{lancamentoCobrancaBean.itemFilter.matricula}'
-										label='Aluno' converter='#{matriculaConverter}' maxlength="60"
+										value='#{lancamentoCobrancaBean.itemFilter}'
+										label='Aluno' converter='#{lancamentoCobrancaConverter}' maxlength="60"
 										size="60">
 										<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
-										<f:selectItems value='#{lancamentoCobrancaBean.listaMatricula}'
+										<f:selectItems value='#{lancamentoCobrancaBean.items}'
 											var='item' itemValue='#{item}'
-											itemLabel='#{item.aluno.pessoa.nome}' />
-									</p:selectOneMenu>
+											itemLabel='#{item.matricula.aluno.pessoa.nome}' />
+									</p:selectOneMenu> 
 
 								</h:panelGrid>
 
@@ -113,10 +113,10 @@
 							<p:panel id='editPanel'>
 								<f:facet name='header'>
 									<h:outputText
-										value="#{i18n['operations.create']} #{i18n['turmaDisciplina']}"
+										value="#{i18n['operations.create']} #{i18n['lancamentoCobranca']}"
 										rendered="#{lancamentoCobrancaBean.state eq 'CREATE'}" />
 									<h:outputText
-										value="#{i18n['operations.update']} #{i18n['turmaDisciplina']}"
+										value="#{i18n['operations.update']} #{i18n['lancamentoCobranca']}"
 										rendered="#{lancamentoCobrancaBean.state eq 'UPDATE'}" />
 								</f:facet>
 								<div class='ui-grid-form ui-grid ui-grid-responsive'>
@@ -146,6 +146,7 @@
 									</p:commandButton>
 									<p:commandButton id='buttonCreate'
 										value="#{i18n['button.save']}"
+										
 										action='#{lancamentoCobrancaBean.create}' icon='ui-icon-check'
 										rendered="#{lancamentoCobrancaBean.state eq 'CREATE'}"
 										process='@form' update='@form' style='float: right;'>

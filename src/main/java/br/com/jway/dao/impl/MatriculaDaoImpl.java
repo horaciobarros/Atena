@@ -32,6 +32,8 @@ public class MatriculaDaoImpl implements MatriculaDao{
 		StringBuilder jpql = new StringBuilder()
 			.append("SELECT x ") 
 			.append("FROM " + Matricula.class.getName() + " x ") //
+			.append("INNER JOIN x.aluno a ")
+			.append("INNER JOIN a.pessoa p ")
 			.append("ORDER BY x.id ASC ");
 		return em.createQuery(jpql.toString(), Matricula.class).getResultList();
 	}

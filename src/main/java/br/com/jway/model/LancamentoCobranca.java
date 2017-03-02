@@ -42,6 +42,10 @@ public class LancamentoCobranca implements Serializable {
 	
 	@Column(name="status")
 	private String status;
+	
+	@Column(name="tenancy")
+	private Long tenancy;
+
 
 	public Long getId() {
 		return id;
@@ -113,6 +117,7 @@ public class LancamentoCobranca implements Serializable {
 		result = prime * result + ((mesReferencia == null) ? 0 : mesReferencia.hashCode());
 		result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
+		result = prime * result + ((tenancy == null) ? 0 : tenancy.hashCode());
 		result = prime * result + ((valorCobrado == null) ? 0 : valorCobrado.hashCode());
 		return result;
 	}
@@ -156,12 +161,25 @@ public class LancamentoCobranca implements Serializable {
 				return false;
 		} else if (!status.equals(other.status))
 			return false;
+		if (tenancy == null) {
+			if (other.tenancy != null)
+				return false;
+		} else if (!tenancy.equals(other.tenancy))
+			return false;
 		if (valorCobrado == null) {
 			if (other.valorCobrado != null)
 				return false;
 		} else if (!valorCobrado.equals(other.valorCobrado))
 			return false;
 		return true;
+	}
+
+	public Long getTenancy() {
+		return tenancy;
+	}
+
+	public void setTenancy(Long tenancy) {
+		this.tenancy = tenancy;
 	}
 	
 	

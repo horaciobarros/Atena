@@ -28,37 +28,43 @@ public class LancamentoCobrancaDaoImpl implements LancamentoCobrancaDao{
 
 	@Override
 	public List<LancamentoCobranca> list() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + LancamentoCobranca.class.getName() + " x ") //
+				.append("INNER JOIN x.matricula m ")
+				.append("INNER JOIN m.aluno a ")
+				.append("INNER JOIN a.pessoa p ")
+				.append("ORDER BY x.id ASC ");
+			return em.createQuery(jpql.toString(), LancamentoCobranca.class).getResultList();
 	}
 
 	@Override
 	public LancamentoCobranca read(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(LancamentoCobranca.class, id);
 	}
 
 	@Override
 	public void create(LancamentoCobranca lc) {
-		// TODO Auto-generated method stub
+		lc.setTenancy(tenancyService.getTenancyDaSessao());
+		em.persist(lc);
 		
 	}
 
 	@Override
 	public LancamentoCobranca update(LancamentoCobranca lc) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.merge(lc);
 	}
 
 	@Override
 	public void delete(LancamentoCobranca lc) {
-		// TODO Auto-generated method stub
+		em.remove(lc);
 		
 	}
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
+		LancamentoCobranca turma = em.getReference(LancamentoCobranca.class, id);
+		delete(turma);
 		
 	}
 

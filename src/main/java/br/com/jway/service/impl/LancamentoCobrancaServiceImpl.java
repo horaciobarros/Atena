@@ -20,44 +20,41 @@ public class LancamentoCobrancaServiceImpl implements LancamentoCobrancaService,
 
 	@Override
 	public void create(LancamentoCobranca lancamentoCobranca) {
-		// TODO Auto-generated method stub
+		dao.create(lancamentoCobranca);
 		
 	}
 
 	@Override
 	public void delete(LancamentoCobranca lancamentoCobranca) {
-		// TODO Auto-generated method stub
+		dao.delete(lancamentoCobranca);
 		
 	}
 
 	@Override
 	public void update(LancamentoCobranca lancamentoCobranca) {
-		// TODO Auto-generated method stub
+		dao.update(lancamentoCobranca);
 		
 	}
 
 	@Override
 	public List<LancamentoCobranca> list() {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.list();
 	}
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
+		dao.delete(id);
 		
 	}
 
 	@Override
 	public LancamentoCobranca read(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.read(id);
 	}
 
 	@Override
 	public List<LancamentoCobranca> pesquisa(LancamentoCobranca lancamentoCobranca) {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.pesquisa(lancamentoCobranca);
 	}
 
 }

@@ -153,6 +153,8 @@ public class Matricula implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((percDesconto == null) ? 0 : percDesconto.hashCode());
 		result = prime * result + ((servicoMatriculaList == null) ? 0 : servicoMatriculaList.hashCode());
+		result = prime * result
+				+ ((servicoMatriculaListToRemove == null) ? 0 : servicoMatriculaListToRemove.hashCode());
 		result = prime * result + ((situacao == null) ? 0 : situacao.hashCode());
 		result = prime * result + ((temDesconto == null) ? 0 : temDesconto.hashCode());
 		result = prime * result + ((tenancy == null) ? 0 : tenancy.hashCode());
@@ -199,6 +201,11 @@ public class Matricula implements Serializable{
 				return false;
 		} else if (!servicoMatriculaList.equals(other.servicoMatriculaList))
 			return false;
+		if (servicoMatriculaListToRemove == null) {
+			if (other.servicoMatriculaListToRemove != null)
+				return false;
+		} else if (!servicoMatriculaListToRemove.equals(other.servicoMatriculaListToRemove))
+			return false;
 		if (situacao == null) {
 			if (other.situacao != null)
 				return false;
@@ -231,7 +238,7 @@ public class Matricula implements Serializable{
 	}
 	
 	
-	public String descricaoDetalhada() {
+	public String getDescricaoDetalhada() {
 		
 		return aluno.getPessoa().getNome() + " - " + anoLetivo + " - " + dataInicio; 
 	}
