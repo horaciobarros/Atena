@@ -44,7 +44,7 @@ public class MatriculaConverter implements Converter, Serializable{
 	
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,Object value) {
-		if (value != null && value != "") {
+		if (value != null && !value.equals("")) {
 			Matricula matricula = (Matricula) value;
 			System.out.println("ID: " + matricula.getId());
 			return matricula.getId() + "";

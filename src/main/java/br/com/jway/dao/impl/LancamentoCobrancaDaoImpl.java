@@ -34,6 +34,7 @@ public class LancamentoCobrancaDaoImpl implements LancamentoCobrancaDao{
 				.append("INNER JOIN x.matricula m ")
 				.append("INNER JOIN m.aluno a ")
 				.append("INNER JOIN a.pessoa p ")
+				.append("INNER JOIN m.turma t ")
 				.append("ORDER BY x.id ASC ");
 			return em.createQuery(jpql.toString(), LancamentoCobranca.class).getResultList();
 	}

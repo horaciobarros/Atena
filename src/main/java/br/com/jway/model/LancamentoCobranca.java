@@ -183,7 +183,4 @@ public class LancamentoCobranca implements Serializable {
 	}
 	
 	
-	
-	
-
 }

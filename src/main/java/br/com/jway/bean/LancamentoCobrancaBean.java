@@ -1,6 +1,7 @@
 package br.com.jway.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -13,6 +14,7 @@ import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 import br.com.jway.service.*;
 import br.com.jway.model.*;
 import br.com.jway.util.FacesUtils;
+import br.com.jway.util.Util;
 
 @ManagedBean
 @ViewScoped
@@ -140,5 +142,11 @@ public class LancamentoCobrancaBean extends SpringBeanAutowiringSupport implemen
 	public void setListaMatricula(List<Matricula> listaMatricula) {
 		this.listaMatricula = listaMatricula;
 	}
+	
+	public BigDecimal getValorCobrado() {
+		
+		return new BigDecimal(0);
+	}
+	
 
 }
