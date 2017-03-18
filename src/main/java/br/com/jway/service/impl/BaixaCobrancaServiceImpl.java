@@ -4,11 +4,13 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import br.com.jway.dao.BaixaCobrancaDao;
 import br.com.jway.model.BaixaCobranca;
 import br.com.jway.service.BaixaCobrancaService;
 
+@Named
 public class BaixaCobrancaServiceImpl implements BaixaCobrancaService, Serializable{
 
 	private static final long serialVersionUID = 1L;

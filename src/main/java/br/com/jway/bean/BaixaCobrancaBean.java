@@ -29,6 +29,7 @@ public  class BaixaCobrancaBean extends SpringBeanAutowiringSupport implements S
 	private List<BaixaCobranca> items;
 	private BaixaCobranca item;
 	private BaixaCobranca itemFilter;
+	private List<LancamentoCobranca> listaLancamentoCobranca;
 	
 	
 	public BaixaCobrancaBean() {
@@ -123,6 +124,16 @@ public  class BaixaCobrancaBean extends SpringBeanAutowiringSupport implements S
 	
 	public void setItemFilter(BaixaCobranca itemFilter) {
 		this.itemFilter = itemFilter;
+	}
+
+
+	public List<LancamentoCobranca> getListaLancamentoCobranca() {
+		return listaLancamentoCobranca;
+	}
+
+
+	public void setListaLancamentoCobranca(List<LancamentoCobranca> listaLancamentoCobranca) {
+		this.listaLancamentoCobranca = listaLancamentoCobranca;
 	}
 
 

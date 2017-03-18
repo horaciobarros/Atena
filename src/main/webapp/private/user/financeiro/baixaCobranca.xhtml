@@ -7,7 +7,6 @@
 	xmlns:c='http://java.sun.com/jsp/jstl/core'
 	xmlns:p='http://primefaces.org/ui'
 	xmlns:pe='http://primefaces.org/ui/extensions'
-	xmlns:pt='http://xmlns.jcp.org/jsf/passthrough'
 	xmlns:fn='http://java.sun.com/jsp/jstl/functions'>
 
 <ui:composition template='/private/template/layout.xhtml'>
@@ -25,7 +24,7 @@
 								<h:panelGrid columns="2">
 
 
-									<h:outputLabel value='Aluno matriculado:' />
+									<h:outputLabel value='Cobrança:' />
 									<p:selectOneMenu id='aluno'
 										value='#{baixaCobrancaBean.itemFilter}' label='Aluno'
 										converter='#{baixaCobrancaConverter}' maxlength="60"
@@ -126,12 +125,12 @@
 										<h:panelGrid columns="2" width="100%">
 											<h:outputText value='Matricula' />
 											<p:selectOneMenu id='matricula'
-												value='#{baixaCobrancaBean.item.matricula}'
-												label='Matricula' converter='#{matriculaConverter}'
+												value='#{baixaCobrancaBean.item.lancamentoCobranca}'
+												label='Matricula' converter='#{baixaCobrancaConverter}'
 												required="true">
 												<f:selectItem itemLabel='Escolha' itemValue='#{null}' />
 												<f:selectItems
-													value='#{baixaCobrancaBean.listaMatricula}' var='mat'
+													value='#{baixaCobrancaBean.listaLancamentoCobranca}' var='mat'
 													itemValue='#{mat}' itemLabel='#{mat.descricaoDetalhada}' />
 												<p:ajax event="change"
 													listener="#{permissoesBean.getValorCobrado}"
