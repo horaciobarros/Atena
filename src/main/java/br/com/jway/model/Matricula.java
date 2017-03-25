@@ -238,10 +238,8 @@ public class Matricula implements Serializable{
 	}
 	
 	
-	public String getDescricaoDetalhada() {
-		
-		return aluno.getPessoa().getNome() + " - " + anoLetivo + " - " + dataInicio; 
+	public String getDescricao() {
+		return getAluno().getPessoa().getNome() + " " + getId();
 	}
-	
 
 }

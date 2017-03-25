@@ -36,7 +36,7 @@ public class AlunoConverter implements Converter, Serializable{
 			return object;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ConverterException("Não foi possível encontrar o Aluno de id: " + value + ". " + e.getMessage());
+			throw new ConverterException("Nï¿½o foi possï¿½vel encontrar o Aluno de id: " + value + ". " + e.getMessage());
 		}
 	
 	
@@ -44,7 +44,7 @@ public class AlunoConverter implements Converter, Serializable{
 	
 	@Override
 	public String getAsString(FacesContext context, UIComponent component,Object value) {
-		if (value != null && value != "") {
+		if (value != null && !value.equals("")) {
 			Aluno aluno = (Aluno) value;
 			System.out.println("ID: " + aluno.getId());
 			return aluno.getId() + "";

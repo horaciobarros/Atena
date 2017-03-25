@@ -6,6 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import br.com.jway.dao.LancamentoCobrancaDao;
 import br.com.jway.model.LancamentoCobranca;
 import br.com.jway.service.LancamentoCobrancaService;
@@ -19,18 +22,21 @@ public class LancamentoCobrancaServiceImpl implements LancamentoCobrancaService,
 	private LancamentoCobrancaDao dao;
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void create(LancamentoCobranca lancamentoCobranca) {
 		dao.create(lancamentoCobranca);
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(LancamentoCobranca lancamentoCobranca) {
 		dao.delete(lancamentoCobranca);
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(LancamentoCobranca lancamentoCobranca) {
 		dao.update(lancamentoCobranca);
 		
@@ -42,6 +48,7 @@ public class LancamentoCobrancaServiceImpl implements LancamentoCobrancaService,
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(long id) {
 		dao.delete(id);
 		

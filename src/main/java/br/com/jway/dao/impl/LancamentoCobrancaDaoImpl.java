@@ -7,6 +7,9 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.uaihebert.uaicriteria.UaiCriteria;
 
 import br.com.jway.dao.LancamentoCobrancaDao;
@@ -45,6 +48,7 @@ public class LancamentoCobrancaDaoImpl implements LancamentoCobrancaDao{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(LancamentoCobranca lc) {
 		lc.setTenancy(tenancyService.getTenancyDaSessao());
 		em.persist(lc);
@@ -52,17 +56,20 @@ public class LancamentoCobrancaDaoImpl implements LancamentoCobrancaDao{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public LancamentoCobranca update(LancamentoCobranca lc) {
 		return em.merge(lc);
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void delete(LancamentoCobranca lc) {
 		em.remove(lc);
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void delete(long id) {
 		LancamentoCobranca turma = em.getReference(LancamentoCobranca.class, id);
 		delete(turma);

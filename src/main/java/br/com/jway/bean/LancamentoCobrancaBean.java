@@ -40,14 +40,16 @@ public class LancamentoCobrancaBean extends SpringBeanAutowiringSupport implemen
 	public LancamentoCobrancaBean() {
 		log.info("Bean constructor called.");
 		itemFilter = new LancamentoCobranca();
+		item = null;
 		limpaPesquisa();
-		listaMatricula = matriculaService.list();
+		listaMatricula = matriculaService.listSemServicos();
 	}
 
 	@PostConstruct
 	private void postConstruct() {
 		log.info("Bean @PostConstruct called.");
 		state = "READ";
+		item = null;
 		items = service.list();
 	}
 
@@ -58,12 +60,7 @@ public class LancamentoCobrancaBean extends SpringBeanAutowiringSupport implemen
 	}
 
 	public void clearItem() {
-		try {
-			// Instantiating via reflection was used here for generic purposes
-			item = LancamentoCobranca.class.newInstance();
-		} catch (InstantiationException | IllegalAccessException e) {
-			FacesUtils.addI18nError("generic.bean.unableToCleanViewData");
-		}
+		item = new LancamentoCobranca();
 	}
 
 	public void create() {
@@ -142,11 +139,9 @@ public class LancamentoCobrancaBean extends SpringBeanAutowiringSupport implemen
 	public void setListaMatricula(List<Matricula> listaMatricula) {
 		this.listaMatricula = listaMatricula;
 	}
-	
-	public BigDecimal getValorCobrado() {
-		
-		return new BigDecimal(0);
+
+	public void getValorCobrado() {
+		item.setValorCobrado(matriculaService.getValorLiquidoMatricula(item.getMatricula()));
 	}
-	
 
 }

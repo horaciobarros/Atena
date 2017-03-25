@@ -24,4 +24,6 @@ public interface MatriculaService  extends Serializable {
 	public List<Matricula> pesquisa(Matricula matricula);
 	
 	public BigDecimal getValorLiquidoMatricula(Matricula matricula);
+
+	public List<Matricula> listSemServicos();
 }

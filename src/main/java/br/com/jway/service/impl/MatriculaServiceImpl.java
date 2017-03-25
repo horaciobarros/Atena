@@ -90,12 +90,12 @@ public class MatriculaServiceImpl implements MatriculaService {
 	public List<Matricula> list() {
 		List<Matricula> lista = dao.list();
 
-		for (Matricula matricula : lista) { // buscando os serviços de cada
-											// matrícula
+		for (Matricula matricula : lista) { 
 			matricula.setServicoMatriculaList(servicoMatriculaService.findByMatriculaId(matricula.getId()));
 		}
 
 		return lista;
+
 	}
 
 	@Override
@@ -106,6 +106,7 @@ public class MatriculaServiceImpl implements MatriculaService {
 	@Override
 	public BigDecimal getValorLiquidoMatricula(Matricula matricula) {
 		BigDecimal valorMatricula = new BigDecimal(0);
+		matricula.setServicoMatriculaList(servicoMatriculaService.findByMatriculaId(matricula.getId()));
 		for (ServicoMatricula sm : matricula.getServicoMatriculaList()) {
 			if (sm.getPercDesconto() != null) {
 				BigDecimal valorServico = sm.getServico().getValor().
@@ -118,6 +119,11 @@ public class MatriculaServiceImpl implements MatriculaService {
 			}
 		}
 		return valorMatricula;
+	}
+
+	@Override
+	public List<Matricula> listSemServicos() {
+		return dao.list();
 	}
 
 }
