@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.Valid;
 
 @Entity
 @Table(name="baixa_cobranca")
@@ -28,7 +29,7 @@ public class BaixaCobranca implements Serializable{
 	@JoinColumn(name="lancamentoCobranca")
 	private LancamentoCobranca lancamentoCobranca;
 	
-	@Column(name="data_pagamento")
+	@Column(name="data_pagamento" )
 	private Date dataPagamento;
 	
 	@Column(name = "juros")
