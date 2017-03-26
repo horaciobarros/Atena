@@ -7,10 +7,14 @@ import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.uaihebert.uaicriteria.UaiCriteria;
 
 import br.com.jway.dao.BaixaCobrancaDao;
 import br.com.jway.model.BaixaCobranca;
+import br.com.jway.model.LancamentoCobranca;
 import br.com.jway.service.TenancyService;
 
 @Named
@@ -28,8 +32,16 @@ public class BaixaCobrancaDaoImpl implements BaixaCobrancaDao{
 
 	@Override
 	public List<BaixaCobranca> list() {
-		// TODO Auto-generated method stub
-		return null;
+		StringBuilder jpql = new StringBuilder()
+				.append("SELECT x ") 
+				.append("FROM " + BaixaCobranca.class.getName() + " x ") //
+				.append("INNER JOIN x.lancamentoCobranca lc ")
+				.append("INNER JOIN lc.matricula m ")
+				.append("INNER JOIN m.aluno a ")
+				.append("INNER JOIN a.pessoa p ")
+				.append("INNER JOIN m.turma t ")
+				.append("ORDER BY x.id ASC ");
+			return em.createQuery(jpql.toString(), BaixaCobranca.class).getResultList();
 	}
 
 	@Override
@@ -39,27 +51,30 @@ public class BaixaCobrancaDaoImpl implements BaixaCobrancaDao{
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void create(BaixaCobranca bc) {
-		// TODO Auto-generated method stub
+		bc.setTenancy(tenancyService.getTenancyDaSessao());
+		em.persist(bc);
+		
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public BaixaCobranca update(BaixaCobranca bc) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return em.merge(bc);}
 
 	@Override
+	@Transactional(propagation = Propagation.MANDATORY)
 	public void delete(BaixaCobranca bc) {
-		// TODO Auto-generated method stub
+		em.remove(bc);
 		
 	}
 
 	@Override
 	public void delete(long id) {
-		// TODO Auto-generated method stub
-		
+		BaixaCobranca bc = em.getReference(BaixaCobranca.class, id);
+		delete(bc);
 	}
 
 	@Override

@@ -182,5 +182,9 @@ public class LancamentoCobranca implements Serializable {
 		this.tenancy = tenancy;
 	}
 	
+	public String getDescricaoDetalhada() {
+		return this.matricula.getDescricao() + " Mês " + this.getMesReferencia();
+	}
+	
 	
 }

@@ -6,6 +6,9 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
 import br.com.jway.dao.BaixaCobrancaDao;
 import br.com.jway.model.BaixaCobranca;
 import br.com.jway.service.BaixaCobrancaService;
@@ -19,27 +22,30 @@ public class BaixaCobrancaServiceImpl implements BaixaCobrancaService, Serializa
 	private BaixaCobrancaDao dao;
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void create(BaixaCobranca bc) {
-		// TODO Auto-generated method stub
+		dao.create(bc);
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void delete(BaixaCobranca bc) {
-		// TODO Auto-generated method stub
+		dao.delete(bc);
 		
 	}
 
 	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(BaixaCobranca bc) {
-		// TODO Auto-generated method stub
+		dao.update(bc);
 		
 	}
 
 	@Override
 	public List<BaixaCobranca> list() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.list();
 	}
 
 	@Override
