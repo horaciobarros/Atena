@@ -26,11 +26,13 @@ public class AlunoAcessoController {
 		try {
 			Aluno aluno = alunoService.findByMatricula(matricula);
 			if (aluno!=null && aluno.getId() > 0 && senha.equals(aluno.getPessoa().getSenha())){
+				System.out.println("Aluno logado");
 				return aluno;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("Aluno não logado");
 		return new Aluno();
 	}
 	
